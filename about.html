@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>À propos — Emile Brenckle</title>
+  <meta name="description" content="Emile Brenckle, 21 ans, Strasbourg. Étudiant BUT MMI polyvalent : vidéo, web, design graphique, motion design et 3D. Disponible en alternance et freelance."/>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<div class="page">
+  <div class="browser">
+
+    <div class="browser__bar">
+      <div class="browser__dots">
+        <div class="browser__dot browser__dot--red"></div>
+        <div class="browser__dot browser__dot--yellow"></div>
+        <div class="browser__dot browser__dot--green"></div>
+      </div>
+      <div class="browser__url">emilebrenckle.fr/about</div>
+      <button class="theme-btn" id="theme-toggle" title="Mode sombre">☽</button>
+    </div>
+
+    <header class="site-header">
+      <a href="index.html" class="site-logo">Emile Brenckle</a>
+      <nav class="site-nav">
+        <a href="index.html">accueil</a>
+        <a href="work.html">travaux</a>
+        <a href="about.html" class="active">à propos</a>
+        <a href="contact.html">contact</a>
+      </nav>
+    </header>
+
+    <main style="background:var(--white);padding:2rem">
+
+      <!-- ── Two-column layout ─────────────────────────────────── -->
+      <div class="about-layout" style="margin-bottom:2.5rem">
+
+        <!-- Portrait -->
+        <div id="portrait"></div>
+
+        <!-- Bio -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem;padding-top:.5rem">
+          <div>
+            <h1 style="font-family:var(--hand);font-size:clamp(3rem,5vw,4rem);font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:.7rem">
+              À propos
+            </h1>
+            <p style="font-family:var(--mono);font-size:.6rem;color:var(--grey-mid);letter-spacing:.06em;margin-bottom:1.2rem">
+              21 ans · Strasbourg · BUT MMI · 2022—2026
+            </p>
+            <p style="font-family:var(--body);font-size:.85rem;color:var(--ink-soft);line-height:1.7;max-width:480px">
+              Curieux, polyvalent et attentif aux détails, j'aime concevoir des projets
+              utiles et esthétiques qui racontent quelque chose. Vidéo, web ou design :
+              je m'adapte au besoin, avec exigence et bonne humeur.
+            </p>
+          </div>
+
+          <!-- Disponibilité -->
+          <div style="display:flex;flex-wrap:wrap;gap:.6rem;padding-top:1rem;border-top:1px solid var(--grey-border)">
+            <span style="font-family:var(--mono);font-size:.65rem;color:var(--ink-soft);border:1px solid var(--grey-border);padding:.3rem .7rem;letter-spacing:.03em">Alternance · 2025—2026</span>
+            <span style="font-family:var(--mono);font-size:.65rem;color:var(--ink-soft);border:1px solid var(--grey-border);padding:.3rem .7rem;letter-spacing:.03em">Freelance</span>
+            <span style="font-family:var(--mono);font-size:.65rem;color:var(--orange);border:1px solid var(--orange);padding:.3rem .7rem;letter-spacing:.03em">● ouvert aux opportunités</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Skills ─────────────────────────────────────────────── -->
+      <hr class="sep" style="margin-bottom:2rem"/>
+
+      <div class="grid-3">
+
+        <div class="skill-card">
+          <div class="skill-card__head">
+            <span class="skill-card__icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="2.5,1.5 13,7 2.5,12.5" fill="currentColor"/></svg></span>
+            <span class="skill-card__title">vidéo</span>
+          </div>
+          <ul class="skill-card__list">
+            <li>Réalisation</li>
+            <li>Montage</li>
+            <li>Motion Design</li>
+            <li>Étalonnage</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__head">
+            <span class="skill-card__icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 1.5C7 1.5 5 4 5 7C5 10 7 12.5 7 12.5M7 1.5C7 1.5 9 4 9 7C9 10 7 12.5 7 12.5M1.5 7H12.5" stroke="currentColor" stroke-width="1.3"/></svg></span>
+            <span class="skill-card__title">web</span>
+          </div>
+          <ul class="skill-card__list">
+            <li>UI/UX Design</li>
+            <li>Développement</li>
+            <li>CMS & SEO</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__head">
+            <span class="skill-card__icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1.5L8.3 5.7L12.5 7L8.3 8.3L7 12.5L5.7 8.3L1.5 7L5.7 5.7Z" fill="currentColor"/></svg></span>
+            <span class="skill-card__title">design</span>
+          </div>
+          <ul class="skill-card__list">
+            <li>Identité visuelle</li>
+            <li>Édition / Print</li>
+            <li>Illustration</li>
+            <li>Typographie</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Stack technique -->
+      <div style="margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid var(--grey-border)">
+        <span class="label" style="display:block;margin-bottom:1rem">outils</span>
+        <div class="about-tools" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-start">
+          <img src="img/icons/figma.svg" width="32" height="32" alt="Figma"/>
+          <img src="img/icons/ai.svg" width="32" height="32" alt="Illustrator"/>
+          <img src="img/icons/ps.svg" width="32" height="32" alt="Photoshop"/>
+          <img src="img/icons/id.svg" width="32" height="32" alt="InDesign"/>
+          <img src="img/icons/ae.svg" width="32" height="32" alt="After Effects"/>
+          <img src="img/icons/pr.svg" width="32" height="32" alt="Premiere Pro"/>
+        </div>
+      </div>
+    </main>
+
+    <!-- Internal footer -->
+    <div class="internal-footer" style="border-top:1px solid var(--grey-border);padding:.85rem 2rem;display:flex;justify-content:space-between;align-items:center;background:var(--white)">
+      <span style="font-family:var(--mono);font-size:.6rem;color:var(--grey-mid);letter-spacing:.06em">en ce moment :</span>
+      <span style="font-family:var(--hand);font-size:1.1rem;color:var(--ink)">
+        Identité Silence ça Tourne → <span style="color:var(--orange)">2025</span>
+      </span>
+    </div>
+
+    <footer class="site-footer">
+      <span>© 2026 · Strasbourg</span>
+      <div class="site-footer__links">
+        <a href="https://www.instagram.com/emile_brk/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/emile-brenckle" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:emile.brenckle@gmail.com">Mail</a>
+      </div>
+      <span>Fait avec le cœur ♥</span>
+    </footer>
+
+  </div>
+</div>
+
+<script src="js/theme.js"></script>
+<script src="js/projects.js"></script>
+<script>
+  document.getElementById('portrait').innerHTML = `
+    <div style="position:relative;padding-top:133%;overflow:hidden;border:1px solid var(--grey-border)">
+      <img src="img/IMG_Emile.jpg" alt="Emile Brenckle" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block"/>
+      <span style="position:absolute;top:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.5);pointer-events:none">+</span>
+      <span style="position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.5);pointer-events:none">+</span>
+      <span style="position:absolute;bottom:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.5);pointer-events:none">+</span>
+      <span style="position:absolute;bottom:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.5);pointer-events:none">+</span>
+    </div>
+  `;
+</script>
+</body>
+</html>

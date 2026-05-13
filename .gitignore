@@ -1,0 +1,15 @@
+.DS_Store
+.next/
+node_modules/
+.claude/
+.vscode/
+app/
+components/
+lib/
+next-env.d.ts
+next.config.ts
+package.json
+package-lock.json
+postcss.config.mjs
+tsconfig.json
+start.sh

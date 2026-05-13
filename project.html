@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projet — Emile Brenckle</title>
+  <meta name="description" content="Détail d'un projet d'Emile Brenckle — portfolio BUT MMI Strasbourg. Web, design, motion, 3D et vidéo."/>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<div class="page">
+  <div class="browser">
+
+    <div class="browser__bar">
+      <div class="browser__dots">
+        <div class="browser__dot browser__dot--red"></div>
+        <div class="browser__dot browser__dot--yellow"></div>
+        <div class="browser__dot browser__dot--green"></div>
+      </div>
+      <div class="browser__url" id="page-url">emilebrenckle.fr/work/…</div>
+      <button class="theme-btn" id="theme-toggle" title="Mode sombre">☽</button>
+    </div>
+
+    <header class="site-header">
+      <a href="index.html" class="site-logo">Emile Brenckle</a>
+      <nav class="site-nav">
+        <a href="index.html">accueil</a>
+        <a href="work.html" class="active">travaux</a>
+        <a href="about.html">à propos</a>
+        <a href="contact.html">contact</a>
+      </nav>
+    </header>
+
+    <main style="background:var(--white)" id="project-content">
+      <!-- filled by JS -->
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 · Strasbourg</span>
+      <div class="site-footer__links">
+        <a href="https://www.instagram.com/emile_brk/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/emile-brenckle" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:emile.brenckle@gmail.com">Mail</a>
+      </div>
+      <span>Fait avec le cœur ♥</span>
+    </footer>
+
+  </div>
+</div>
+
+<script src="js/theme.js"></script>
+<script src="js/projects.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const slug   = params.get('slug') || projects[0].slug;
+  const p      = projects.find(x => x.slug === slug) || projects[0];
+  const nextP  = projects[(projects.indexOf(p) + 1) % projects.length];
+
+  // Update browser URL bar + page title
+  document.getElementById('page-url').textContent = `emilebrenckle.fr/work/${p.slug}`;
+  document.title = `${p.title} — Emile Brenckle`;
+
+  document.getElementById('project-content').innerHTML = `
+
+    <!-- Main visual -->
+    <div style="padding:2rem 2rem 0">
+      ${p.cover
+        ? `<div style="position:relative;padding-top:52%;overflow:hidden;background:transparent">
+             <img src="${p.detailCover || p.cover}" alt="${p.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"/>
+             <span style="position:absolute;top:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
+             <span style="position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
+             <span style="position:absolute;bottom:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
+             <span style="position:absolute;bottom:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
+             ${p.liveUrl ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" style="position:absolute;inset:0;z-index:2" title="Voir le site en ligne"></a>` : ''}
+           </div>`
+        : mediaHTML('21/9', 'visuel principal du projet')
+      }
+    </div>
+
+    <!-- Secondary visuals -->
+    <div style="padding:2rem 2rem 0;display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start">
+      ${p.detailImages
+        ? p.detailImages.map(src => `
+          <div style="position:relative;padding-top:56.25%;overflow:hidden;border:1px solid var(--grey-border)">
+            <img src="${src}" alt="${p.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"/>
+          </div>`).join('')
+        : mediaHTML('16/9', 'détail projet') + mediaHTML('16/9', 'détail projet')
+      }
+    </div>
+
+    <hr class="sep" style="margin:2rem 2rem 0"/>
+
+    <!-- Project header -->
+    <div style="padding:2rem">
+      <p style="font-family:var(--mono);font-size:.6rem;color:var(--grey-mid);letter-spacing:.06em;margin-bottom:.45rem">
+        ${CATEGORY_LABELS[p.category]} · ${p.year}
+      </p>
+      <h1 style="font-family:var(--hand);font-size:clamp(2.5rem,5vw,3.5rem);font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:.5rem">
+        ${p.title}
+      </h1>
+      <p style="font-family:var(--mono);font-size:.6rem;color:var(--grey-mid);letter-spacing:.06em;margin-bottom:1rem">
+        ${p.role.join(' · ')} · ${p.year}
+      </p>
+      <p style="font-family:var(--body);font-size:.85rem;color:var(--ink-soft);line-height:1.7;max-width:560px;margin-bottom:${p.liveUrl ? '1.5rem' : '0'}">
+        ${p.longDesc}
+      </p>
+      ${p.liveUrl ? `
+      <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer"
+         style="display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--orange);padding:.55rem 1rem;font-family:var(--mono);font-size:.62rem;color:var(--orange);letter-spacing:.06em;white-space:nowrap;transition:background .2s,color .2s"
+         onmouseover="this.style.background='var(--orange)';this.style.color='#fff'"
+         onmouseout="this.style.background='transparent';this.style.color='var(--orange)'">
+        ↗ ${p.liveLabel || 'voir le site'}
+      </a>` : ''}
+    </div>
+
+    <!-- 3-column info -->
+    <div style="padding:1.75rem 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;border-top:1px solid var(--grey-border);border-bottom:1px solid var(--grey-border)">
+      ${[
+        { label: 'rôle',     items: p.role    },
+        { label: 'outils',   items: p.tools   },
+        { label: 'contexte', items: p.context },
+      ].map(col => `
+        <div>
+          <h3 style="font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.7rem">${col.label}</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">
+            ${col.items.map(i => `<li style="font-family:var(--mono);font-size:.68rem;color:var(--ink-soft)">${i}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- Bottom nav -->
+    <div style="padding:1.25rem 2rem;border-top:1px solid var(--grey-border);display:flex;justify-content:space-between;align-items:center">
+      <a href="work.html" style="font-family:var(--mono);font-size:.63rem;color:var(--grey-mid);letter-spacing:.06em;transition:color .2s"
+         onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--grey-mid)'">
+        ← retour aux projets
+      </a>
+      <a href="project.html?slug=${nextP.slug}" class="link-orange">
+        projet suivant →
+      </a>
+    </div>
+  `;
+</script>
+</body>
+</html>

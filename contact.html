@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Emile Brenckle</title>
+  <meta name="description" content="Contacter Emile Brenckle — ouvert aux opportunités CDD, CDI et freelance. Basé à Strasbourg, disponible sur tout projet web, vidéo ou design."/>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<div class="page">
+  <div class="browser">
+
+    <div class="browser__bar">
+      <div class="browser__dots">
+        <div class="browser__dot browser__dot--red"></div>
+        <div class="browser__dot browser__dot--yellow"></div>
+        <div class="browser__dot browser__dot--green"></div>
+      </div>
+      <div class="browser__url">emilebrenckle.fr/contact</div>
+      <button class="theme-btn" id="theme-toggle" title="Mode sombre">☽</button>
+    </div>
+
+    <header class="site-header">
+      <a href="index.html" class="site-logo">Emile Brenckle</a>
+      <nav class="site-nav">
+        <a href="index.html">accueil</a>
+        <a href="work.html">travaux</a>
+        <a href="about.html">à propos</a>
+        <a href="contact.html" class="active">contact</a>
+      </nav>
+    </header>
+
+    <style>
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 260px;
+        gap: 3rem;
+        align-items: start;
+      }
+      .contact-sidebar {
+        border-left: 1px solid var(--grey-border);
+        padding-left: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .contact-sidebar__block {
+        padding-bottom: 1.1rem;
+        margin-bottom: 1.1rem;
+        border-bottom: 1px solid var(--grey-border);
+      }
+      .contact-sidebar__block:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      .contact-btn {
+        font-family: var(--mono);
+        font-size: .72rem;
+        letter-spacing: .04em;
+        padding: .65rem 1.2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        transition: opacity .2s;
+        cursor: pointer;
+      }
+      .contact-btn:hover { opacity: .8; }
+      .contact-btn--primary {
+        background: var(--orange);
+        color: #fff;
+        border: 1.5px solid var(--orange);
+      }
+      .contact-btn--secondary {
+        background: transparent;
+        color: var(--orange);
+        border: 1.5px solid var(--orange);
+      }
+      @media (max-width: 640px) {
+        .contact-grid { grid-template-columns: 1fr; gap: 2rem; padding-left: 0 !important; }
+        .contact-sidebar { border-left: none; padding-left: 0; border-top: 1px solid var(--grey-border); padding-top: 1.5rem; }
+        .contact-btns { flex-direction: column; }
+        .contact-btns .contact-btn { width: 100%; justify-content: center; box-sizing: border-box; padding: .65rem 1.2rem !important; font-size: .72rem !important; }
+        .contact-main p { margin-bottom: 1.25rem !important; }
+        .contact-main { padding: 1.5rem 1.25rem 2rem !important; }
+        .contact-main h1 { font-size: 2rem !important; line-height: 1.15 !important; }
+        .contact-email { font-size: .78rem !important; overflow-wrap: break-word; word-break: break-all; display: block !important; max-width: 100%; }
+        .contact-main p { font-size: .72rem; }
+        .contact-main p br { display: none; }
+      }
+    </style>
+
+    <main class="contact-main" style="background:var(--white);padding:2.5rem 2.5rem 3rem;display:flex;flex-direction:column;justify-content:center;flex:1">
+
+      <span class="label" style="display:block;margin-bottom:2rem">contact</span>
+
+      <div class="contact-grid" style="padding-left:1.5rem">
+
+        <!-- ── Contenu principal ───────────────────────────────── -->
+        <div>
+
+          <!-- Titre -->
+          <h1 style="font-family:var(--hand);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:600;color:var(--ink);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem;max-width:580px">
+            Un projet, une idée,<br>
+            ou une opportunité <span style="color:var(--orange)">?</span>
+          </h1>
+
+          <!-- Description -->
+          <p style="font-family:var(--body);font-size:.85rem;color:var(--grey-mid);line-height:1.7;margin-bottom:2.5rem;max-width:460px">
+            Actuellement en alternance, je suis ouvert aux opportunités<br>
+            pour la suite : CDD, CDI ou freelance.
+          </p>
+
+          <!-- Boutons -->
+          <div class="contact-btns" style="display:flex;gap:.85rem;flex-wrap:wrap">
+            <a href="mailto:emile.brenckle@gmail.com" class="contact-btn contact-btn--primary" style="font-size:.78rem;padding:.8rem 1.6rem">
+              Envoyer un mail →
+            </a>
+            <a href="https://acrobat.adobe.com/id/urn:aaid:sc:eu:f1426332-040b-455e-96fc-759445d8c83d"
+               target="_blank" rel="noopener noreferrer"
+               class="contact-btn contact-btn--secondary" style="font-size:.78rem;padding:.8rem 1.6rem">
+              Voir mon CV ↗
+            </a>
+          </div>
+
+        </div>
+
+        <!-- ── Sidebar ─────────────────────────────────────────── -->
+        <div class="contact-sidebar">
+
+          <div class="contact-sidebar__block">
+            <div style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.55rem">Statut</div>
+            <div style="display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.67rem;color:var(--ink);letter-spacing:.03em">
+              <span style="color:var(--orange);font-size:.45rem">●</span>
+              En alternance
+            </div>
+          </div>
+
+          <div class="contact-sidebar__block">
+            <div style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.55rem">Pour la suite</div>
+            <div style="font-family:var(--mono);font-size:.67rem;color:var(--ink);letter-spacing:.03em">CDD / CDI / freelance</div>
+          </div>
+
+          <div class="contact-sidebar__block">
+            <div style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.55rem">Localisation</div>
+            <div style="font-family:var(--mono);font-size:.67rem;color:var(--ink);letter-spacing:.03em">Strasbourg, France</div>
+          </div>
+
+          <div class="contact-sidebar__block">
+            <div style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.55rem">Ailleurs</div>
+            <div style="display:flex;flex-direction:column;gap:.4rem">
+              <a href="https://www.instagram.com/emile_brk/" target="_blank" rel="noopener noreferrer" class="link-orange" style="text-transform:none;letter-spacing:.03em">Instagram →</a>
+              <a href="https://www.linkedin.com/in/emile-brenckle" target="_blank" rel="noopener noreferrer" class="link-orange" style="text-transform:none;letter-spacing:.03em">LinkedIn →</a>
+              <a href="https://acrobat.adobe.com/id/urn:aaid:sc:eu:f1426332-040b-455e-96fc-759445d8c83d" target="_blank" rel="noopener noreferrer" class="link-orange" style="text-transform:none;letter-spacing:.03em">CV →</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 · Strasbourg</span>
+      <div class="site-footer__links">
+        <a href="https://www.instagram.com/emile_brk/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/emile-brenckle" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:emile.brenckle@gmail.com">Mail</a>
+      </div>
+      <span>Fait avec le cœur ♥</span>
+    </footer>
+
+  </div>
+</div>
+<script src="js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emile Brenckle — Portfolio</title>
+  <meta name="description" content="Portfolio d'Emile Brenckle — étudiant BUT MMI à Strasbourg. Vidéo, web, design, motion et 3D. 12 projets réalisés en autonomie."/>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<div class="page">
+  <div class="browser">
+
+    <!-- Browser bar -->
+    <div class="browser__bar">
+      <div class="browser__dots">
+        <div class="browser__dot browser__dot--red"></div>
+        <div class="browser__dot browser__dot--yellow"></div>
+        <div class="browser__dot browser__dot--green"></div>
+      </div>
+      <div class="browser__url">emilebrenckle.fr</div>
+      <button class="theme-btn" id="theme-toggle" title="Mode sombre">☽</button>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+      <a href="index.html" class="site-logo">Emile Brenckle</a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">accueil</a>
+        <a href="work.html">travaux</a>
+        <a href="about.html">à propos</a>
+        <a href="contact.html">contact</a>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main style="background:var(--white)">
+
+      <!-- ── Hero ─────────────────────────────────────────────────── -->
+      <section style="padding:2.5rem 2rem 2rem; border-bottom:1px solid var(--grey-border)">
+        <div class="grid-hero">
+
+          <!-- Left: name + tagline -->
+          <div style="display:flex;flex-direction:column;justify-content:space-between;gap:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:center;line-height:1">
+              <span class="label" style="font-size:.6rem;line-height:1">BUT MMI · 2022—2026</span>
+              <a href="contact.html" style="font-family:var(--mono);font-size:.6rem;color:var(--grey-mid);display:inline-flex;align-items:center;gap:.3rem;line-height:1">
+                <span style="color:var(--orange);font-size:.5rem;line-height:1;display:inline-flex;align-items:center">●</span>contactez-moi
+              </a>
+            </div>
+
+            <div>
+              <h1 style="font-family:var(--hand);font-size:clamp(3.5rem,8vw,5.5rem);font-weight:700;line-height:.95;color:var(--ink);letter-spacing:-.03em;font-optical-sizing:auto">
+                <span class="hero-word">Emile</span>
+                <span class="hero-word">Brenckle<span style="color:var(--orange)">.</span></span>
+              </h1>
+              <p style="font-family:var(--body);font-size:.8rem;color:var(--grey-mid);line-height:1.65;margin-top:1rem;max-width:320px">
+                fait des vidéos, des sites et des images —<br>
+                parfois les trois en même temps.
+              </p>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:1.25rem;margin-top:.25rem">
+              <a href="work.html" class="cta-btn">voir tous les projets →</a>
+              <a href="about.html" class="link-orange">à propos →</a>
+            </div>
+
+            <!-- Mini stats -->
+            <div style="display:flex;gap:2rem;padding-top:1.25rem;border-top:1px solid var(--grey-border)">
+              <div>
+                <div style="font-family:var(--hand);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">12</div>
+                <div style="font-family:var(--mono);font-size:.55rem;color:var(--grey-mid);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem">projets</div>
+              </div>
+              <div>
+                <div style="font-family:var(--hand);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">5</div>
+                <div style="font-family:var(--mono);font-size:.55rem;color:var(--grey-mid);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem">disciplines</div>
+              </div>
+              <div>
+                <div style="font-family:var(--hand);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">2026</div>
+                <div style="font-family:var(--mono);font-size:.55rem;color:var(--grey-mid);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem">diplôme BUT MMI</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: En ce moment -->
+          <div style="display:flex;flex-direction:column;gap:.75rem" id="en-ce-moment"></div>
+        </div>
+      </section>
+
+      <!-- ── Scroll hint ─────────────────────────────────────────────── -->
+      <div style="display:flex;justify-content:center;padding:.6rem 0;border-bottom:1px solid var(--grey-border);background:var(--white)">
+        <span class="scroll-hint">↓ projets</span>
+      </div>
+
+      <!-- ── Projets récents ───────────────────────────────────────── -->
+      <section style="padding:2rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+          <span class="label">PROJETS RÉCENTS</span>
+          <a href="work.html" class="link-orange">voir tous les projets →</a>
+        </div>
+        <div class="grid-2" id="recent-projects"></div>
+      </section>
+    </main>
+
+    <!-- Bottom nav -->
+    <div style="border-top:1px solid var(--grey-border);padding:.75rem 2rem;display:flex;justify-content:space-between;background:var(--white)">
+      <a href="work.html" style="font-family:var(--mono);font-size:.63rem;color:var(--grey-mid);letter-spacing:.06em">↓ work</a>
+      <a href="about.html" style="font-family:var(--mono);font-size:.63rem;color:var(--grey-mid);letter-spacing:.06em">À propos</a>
+      <a href="contact.html" style="font-family:var(--mono);font-size:.63rem;color:var(--grey-mid);letter-spacing:.06em">contact</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span>© 2026 · Strasbourg</span>
+      <div class="site-footer__links">
+        <a href="https://www.instagram.com/emile_brk/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/emile-brenckle" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:emile.brenckle@gmail.com">Mail</a>
+      </div>
+      <span>Fait avec le cœur ♥</span>
+    </footer>
+
+  </div><!-- .browser -->
+</div><!-- .page -->
+
+<script src="js/theme.js"></script>
+<script src="js/projects.js"></script>
+<script>
+  // En ce moment : projet[0] (le plus récent)
+  const current = projects[0];
+  const visual = current.cover
+    ? `<div style="position:relative;padding-top:56.25%;border:1px solid var(--grey-border);overflow:hidden;background:var(--cream-dark)">
+        <img src="${current.cover}" alt="${current.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"/>
+        <a href="project.html?slug=${current.slug}" style="position:absolute;inset:0;z-index:2" aria-label="Voir ${current.title}"></a>
+        <span style="position:absolute;top:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.6);z-index:1;pointer-events:none">+</span>
+        <span style="position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.6);z-index:1;pointer-events:none">+</span>
+        <span style="position:absolute;bottom:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.6);z-index:1;pointer-events:none">+</span>
+        <span style="position:absolute;bottom:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.6);z-index:1;pointer-events:none">+</span>
+      </div>`
+    : mediaHTML('16/9', current.title);
+
+  document.getElementById('en-ce-moment').innerHTML = `
+    <span class="label">EN CE MOMENT</span>
+    ${visual}
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem">
+        <h2 style="font-family:var(--hand);font-size:1.45rem;font-weight:600;color:var(--ink)">${current.title}</h2>
+        <span style="font-family:var(--mono);font-size:.58rem;color:var(--grey-mid);letter-spacing:.06em">${CATEGORY_LABELS[current.category]} · ${current.year}</span>
+      </div>
+      <p style="font-family:var(--body);font-size:.78rem;color:var(--grey-mid);line-height:1.6;margin-bottom:.6rem">${current.shortDesc}</p>
+      <a href="project.html?slug=${current.slug}" class="link-orange">voir le projet →</a>
+    </div>
+  `;
+
+  // Projets récents : les 2 suivants
+  const featured = [projects[1], projects[2]];
+  document.getElementById('recent-projects').innerHTML =
+    featured.map(p => cardHTML(p, true)).join('');
+</script>
+</body>
+</html>

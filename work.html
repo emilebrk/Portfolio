@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Travaux — Emile Brenckle</title>
+  <meta name="description" content="Tous les projets d'Emile Brenckle : sites web, identités visuelles, motion design, 3D et vidéo. BUT MMI Strasbourg 2022–2026."/>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<div class="page">
+  <div class="browser">
+
+    <div class="browser__bar">
+      <div class="browser__dots">
+        <div class="browser__dot browser__dot--red"></div>
+        <div class="browser__dot browser__dot--yellow"></div>
+        <div class="browser__dot browser__dot--green"></div>
+      </div>
+      <div class="browser__url">emilebrenckle.fr/work</div>
+      <button class="theme-btn" id="theme-toggle" title="Mode sombre">☽</button>
+    </div>
+
+    <header class="site-header">
+      <a href="index.html" class="site-logo">Emile Brenckle</a>
+      <nav class="site-nav">
+        <a href="index.html">accueil</a>
+        <a href="work.html" class="active">travaux</a>
+        <a href="about.html">à propos</a>
+        <a href="contact.html">contact</a>
+      </nav>
+    </header>
+
+    <main style="background:var(--white);padding:2rem">
+
+      <!-- ── Archive header ──────────────────────────────────────── -->
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem">
+        <span class="label">ARCHIVE</span>
+        <span id="counter" style="font-family:var(--mono);font-size:.63rem;color:var(--grey-mid);letter-spacing:.06em"></span>
+      </div>
+
+      <h1 style="font-family:var(--hand);font-size:clamp(2.5rem,5vw,3.5rem);font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem">
+        Toutes les réalisations
+      </h1>
+
+      <!-- ── Filters ─────────────────────────────────────────────── -->
+      <div class="filters" id="filters" style="margin-bottom:2rem"></div>
+
+      <!-- ── Grid ───────────────────────────────────────────────── -->
+      <div class="grid-3" id="projects-grid"></div>
+
+      <!-- ── Load more ──────────────────────────────────────────── -->
+      <button class="btn-load" id="btn-load" style="display:none">
+        ↓ Charger les autres
+      </button>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 · Strasbourg</span>
+      <div class="site-footer__links">
+        <a href="https://www.instagram.com/emile_brk/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/emile-brenckle" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:emile.brenckle@gmail.com">Mail</a>
+      </div>
+      <span>Fait avec le cœur ♥</span>
+    </footer>
+
+  </div>
+</div>
+
+<script src="js/theme.js"></script>
+<script src="js/projects.js"></script>
+<script>
+  const FILTERS_CONFIG = [
+    { key: 'all',      label: 'TOUT' },
+    { key: 'vidéo',    label: 'VIDÉO' },
+    { key: 'web',      label: 'WEB' },
+    { key: 'design',   label: 'DESIGN' },
+    { key: 'motion',   label: 'MOTION' },
+    { key: '3d',       label: '3D' },
+  ];
+
+  let activeFilter = 'all';
+  let showAll = false;
+  const INITIAL = 6;
+
+  function getFiltered() {
+    return activeFilter === 'all'
+      ? projects
+      : projects.filter(p => p.category === activeFilter);
+  }
+
+  function countByKey(key) {
+    return key === 'all' ? projects.length : projects.filter(p => p.category === key).length;
+  }
+
+  function render() {
+    const filtered = getFiltered();
+    const visible  = showAll ? filtered : filtered.slice(0, INITIAL);
+    const remaining = filtered.length - INITIAL;
+
+    // counter
+    document.getElementById('counter').textContent = `${filtered.length} / ${projects.length}`;
+
+    // filters
+    document.getElementById('filters').innerHTML = FILTERS_CONFIG
+      .map(f => `<button class="filter${f.key === activeFilter ? ' is-active' : ''}" data-key="${f.key}">${f.label} (${countByKey(f.key)})</button>`)
+      .join('');
+
+    // grid
+    document.getElementById('projects-grid').innerHTML = visible.map(p => cardHTML(p)).join('');
+
+    // load more
+    const btn = document.getElementById('btn-load');
+    if (!showAll && remaining > 0) {
+      btn.style.display = 'block';
+      btn.textContent = `↓ Charger les ${remaining} autres`;
+    } else {
+      btn.style.display = 'none';
+    }
+  }
+
+  // filter clicks
+  document.getElementById('filters').addEventListener('click', e => {
+    const btn = e.target.closest('.filter');
+    if (!btn) return;
+    activeFilter = btn.dataset.key;
+    showAll = false;
+    render();
+  });
+
+  document.getElementById('btn-load').addEventListener('click', () => {
+    showAll = true;
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>
