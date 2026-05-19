@@ -201,22 +201,23 @@ html {
 
 /* ── Easter egg : dossier de bureau ─────────────────────────────── */
 .desktop-folder {
-  position: absolute;
-  bottom: 2.5rem;
-  right: 2.8rem;
+  position: absolute;       /* coordonnées calculées en JS */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: .4rem;
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 50;
+  pointer-events: none;     /* inactif quand la fenêtre le couvre */
   user-select: none;
   transform-origin: center bottom;
 }
-.desktop-folder.is-visible { pointer-events: all; }
-.desktop-folder__icon { width: 56px; height: 44px; filter: drop-shadow(0 3px 8px rgba(0,0,0,.22)); }
+.desktop-folder.is-minimized {
+  pointer-events: all;      /* actif une fois la fenêtre réduite */
+  cursor: pointer;
+}
+.desktop-folder__icon {
+  width: 56px; height: 44px;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,.22));
+}
 .desktop-folder__label {
   font-family: var(--mono);
   font-size: .5rem;

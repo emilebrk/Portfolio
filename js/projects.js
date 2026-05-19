@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
   yellowDot.style.cursor = 'pointer';
   yellowDot.title = 'Réduire';
 
-  /* Création du dossier */
+  /* Dossier inséré AVANT le browser → rendu derrière lui dans le DOM */
   const folder = document.createElement('div');
   folder.className = 'desktop-folder';
   folder.innerHTML = `
@@ -333,9 +333,19 @@ document.addEventListener('DOMContentLoaded', () => {
     </svg>
     <span class="desktop-folder__label">Portfolio</span>
   `;
-  pageEl.appendChild(folder);
+  pageEl.insertBefore(folder, browser); /* ← derrière le browser */
 
   let minimized = false;
+
+  /* Positionner le dossier dans la zone couverte par le browser (coin bas-droite) */
+  function positionFolder() {
+    if (minimized) return;
+    const br = browser.getBoundingClientRect();
+    folder.style.left = (br.right  - 88) + 'px';
+    folder.style.top  = (br.bottom - 98) + 'px';
+  }
+  positionFolder();
+  window.addEventListener('resize', positionFolder);
 
   /* Ancrer le browser à des coordonnées explicites */
   function anchorBrowser() {
@@ -343,112 +353,92 @@ document.addEventListener('DOMContentLoaded', () => {
     browser.style.top       = r.top  + 'px';
     browser.style.left      = r.left + 'px';
     browser.style.transform = 'none';
+    browser.style.transformOrigin = 'center center';
   }
 
   /* Retour au centre CSS */
   function restoreCenter() {
-    browser.style.transition = '';
-    browser.style.top        = '50%';
-    browser.style.left       = '50%';
-    browser.style.transform  = 'translate(-50%, -50%)';
+    browser.style.transition      = '';
+    browser.style.transformOrigin = '';
+    browser.style.top             = '50%';
+    browser.style.left            = '50%';
+    browser.style.transform       = 'translate(-50%, -50%)';
   }
 
-  /* Clic jaune : réduire */
+  /* ── Minimize ── */
   yellowDot.addEventListener('click', () => {
     if (minimized) return;
     minimized = true;
 
     anchorBrowser();
 
-    /* Montrer le dossier pour récupérer sa position */
-    folder.classList.add('is-visible');
-    folder.style.opacity = '0';
+    const br  = browser.getBoundingClientRect();
+    const fr  = folder.getBoundingClientRect();
+    const bCX = br.left + br.width  / 2;
+    const bCY = br.top  + br.height / 2;
+    const fCX = fr.left + fr.width  / 2;
+    const fCY = fr.top  + fr.height / 2;
+    const dx  = fCX - bCX;
+    const dy  = fCY - bCY;
 
+    /* La fenêtre glisse, rétrécit et pivote légèrement vers le dossier */
     requestAnimationFrame(() => {
-      const br = browser.getBoundingClientRect();
-      const fr = folder.getBoundingClientRect();
-
-      const bCX = br.left + br.width  / 2;
-      const bCY = br.top  + br.height / 2;
-      const fCX = fr.left + fr.width  / 2;
-      const fCY = fr.top  + fr.height / 2;
-
-      const dx = fCX - bCX;
-      const dy = fCY - bCY;
-
-      /* Fenêtre glisse vers le dossier */
-      browser.style.transition     = 'transform .48s cubic-bezier(.4,0,.2,1), opacity .38s ease';
-      browser.style.transformOrigin = 'center center';
-      browser.style.transform      = `translate(${dx}px, ${dy}px) scale(0.05)`;
-      browser.style.opacity        = '0';
-
-      /* Dossier apparaît quand la fenêtre arrive */
-      setTimeout(() => {
-        browser.style.visibility = 'hidden';
-
-        folder.style.transition = 'opacity .18s ease, transform .35s cubic-bezier(.34,1.56,.64,1)';
-        folder.style.opacity    = '1';
-        folder.style.transform  = 'scale(1.18)';
-        setTimeout(() => { folder.style.transform = 'scale(1)'; }, 60);
-
-        /* Petit "wobble" pour attirer l'attention */
-        setTimeout(() => {
-          folder.style.transition = 'transform .5s cubic-bezier(.34,1.56,.64,1)';
-          folder.style.transform  = 'rotate(-6deg) scale(1.05)';
-          setTimeout(() => {
-            folder.style.transform = 'rotate(4deg) scale(1)';
-            setTimeout(() => { folder.style.transform = 'rotate(0deg)'; }, 150);
-          }, 150);
-        }, 450);
-
-      }, 420);
+      browser.style.transition = 'transform .52s cubic-bezier(.6,0,.2,1), opacity .42s ease';
+      browser.style.transform  = `translate(${dx}px, ${dy}px) scale(0.04) rotate(-4deg)`;
+      browser.style.opacity    = '0';
     });
+
+    /* Une fois arrivée : masquer la fenêtre, le dossier était déjà là */
+    setTimeout(() => {
+      browser.style.visibility = 'hidden';
+      folder.classList.add('is-minimized');
+    }, 500);
   });
 
-  /* Double-clic dossier : restaurer */
+  /* ── Restaurer ── */
   folder.addEventListener('dblclick', () => {
     if (!minimized) return;
     minimized = false;
+    folder.classList.remove('is-minimized');
 
-    /* Récupérer centre dossier avant de le cacher */
+    /* Centre du dossier = point de départ de la fenêtre */
     const fr  = folder.getBoundingClientRect();
     const fCX = fr.left + fr.width  / 2;
     const fCY = fr.top  + fr.height / 2;
+    const bw  = browser.offsetWidth;
+    const bh  = browser.offsetHeight;
 
-    /* Dossier se ferme */
-    folder.style.transition = 'opacity .18s ease, transform .18s ease';
-    folder.style.transform  = 'scale(1.35)';
-    folder.style.opacity    = '0';
+    /* Flash d'ouverture sur le dossier */
+    folder.style.transition = 'transform .22s cubic-bezier(.34,1.56,.64,1)';
+    folder.style.transform  = 'scale(1.25)';
+    setTimeout(() => { folder.style.transform = 'scale(1)'; folder.style.transition = ''; }, 220);
 
-    setTimeout(() => {
-      folder.classList.remove('is-visible');
-      folder.style.transform = '';
-      folder.style.opacity   = '';
+    /* Fenêtre part du dossier, minuscule */
+    browser.style.transition      = 'none';
+    browser.style.visibility      = 'visible';
+    browser.style.opacity         = '0';
+    browser.style.left            = (fCX - bw / 2) + 'px';
+    browser.style.top             = (fCY - bh / 2) + 'px';
+    browser.style.transform       = 'scale(0.04) rotate(-4deg)';
+    browser.style.transformOrigin = 'center center';
 
-      /* Browser part du centre du dossier, minuscule */
-      const bw = browser.offsetWidth;
-      const bh = browser.offsetHeight;
+    /* Délai léger puis expansion vers le centre */
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const targetL = (window.innerWidth  - bw) / 2;
+      const targetT = (window.innerHeight - bh) / 2;
+      browser.style.transition = [
+        'transform .58s cubic-bezier(.34,1.56,.64,1)',
+        'top .52s cubic-bezier(.34,1.56,.64,1)',
+        'left .52s cubic-bezier(.34,1.56,.64,1)',
+        'opacity .3s ease'
+      ].join(',');
+      browser.style.left      = targetL + 'px';
+      browser.style.top       = targetT + 'px';
+      browser.style.transform = 'scale(1) rotate(0deg)';
+      browser.style.opacity   = '1';
+    }));
 
-      browser.style.transition     = 'none';
-      browser.style.visibility     = 'visible';
-      browser.style.opacity        = '1';
-      browser.style.left           = (fCX - bw / 2) + 'px';
-      browser.style.top            = (fCY - bh / 2) + 'px';
-      browser.style.transform      = 'scale(0.05)';
-      browser.style.transformOrigin = 'center center';
-
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        const targetL = (window.innerWidth  - bw) / 2;
-        const targetT = (window.innerHeight - bh) / 2;
-
-        browser.style.transition = 'transform .52s cubic-bezier(.34,1.56,.64,1), top .48s cubic-bezier(.34,1.56,.64,1), left .48s cubic-bezier(.34,1.56,.64,1), opacity .25s ease';
-        browser.style.left       = targetL + 'px';
-        browser.style.top        = targetT + 'px';
-        browser.style.transform  = 'scale(1)';
-      }));
-
-      /* Restaurer le CSS centré */
-      setTimeout(restoreCenter, 540);
-    }, 200);
+    /* Restaurer le CSS centré + reposionner le dossier */
+    setTimeout(() => { restoreCenter(); positionFolder(); }, 580);
   });
 });
