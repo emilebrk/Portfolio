@@ -196,6 +196,7 @@ html {
   min-height: 32px;
   cursor: default;
   flex-shrink: 0;
+  position: relative;
 }
 
 .browser__dots { display: flex; gap: 5px; flex-shrink: 0; }
