@@ -341,6 +341,29 @@ html {
 }
 .cta-btn:hover { background: var(--orange-lt); transform: translateY(-1px); }
 
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: .25rem;
+}
+@media (max-width: 480px) {
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: .75rem;
+  }
+  .hero-ctas .cta-btn {
+    justify-content: center;
+    padding: .8rem 1.2rem;
+    font-size: .72rem;
+  }
+  .hero-ctas .link-orange {
+    text-align: center;
+    font-size: .72rem;
+  }
+}
+
 /* ─── Scroll hint ──────────────────────────────────────────────────── */
 @keyframes scrollBounce {
   0%, 100% { transform: translateY(0); opacity: .5; }
