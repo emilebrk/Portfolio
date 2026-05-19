@@ -1,6 +1,21 @@
 const projects = [
   {
     id: 1,
+    slug: 'utmb-alsace',
+    title: 'UTMB Alsace',
+    category: 'photo',
+    year: 2026,
+    shortDesc: "Reportage photo lors de l'UTMB Alsace — prise de vue en RAW et retouche sur Lightroom.",
+    longDesc: "Reportage photographique réalisé lors de l'UTMB Alsace 2026. Prise de vue en RAW avec un appareil hybride, retouche complète sur Adobe Lightroom : travail sur la dynamique des tons, rehaussement des couleurs naturelles et gestion de l'exposition pour rendre la lumière dramatique du ciel alsacien. Chaque photo est traitée individuellement pour maximiser le rendu cinématographique tout en restant fidèle à l'ambiance du terrain.",
+    role: ['photographie', 'retouche', 'étalonnage'],
+    tools: ['Lightroom', 'Appareil RAW'],
+    context: ['événement sportif', 'UTMB Alsace', 'mai 2026'],
+    cover: 'img/BON POUR MV2.jpg',
+    detailCover: 'img/BON POUR MV.jpg',
+    detailImages: ['img/ALLEZ.png', 'img/OTTTTO.png'],
+  },
+  {
+    id: 2,
     slug: 'restaurant-de-la-tour',
     title: 'Restaurant de la Tour',
     category: 'web',
@@ -15,7 +30,7 @@ const projects = [
     detailImages: ['img/restaurant-screen-contact.png', 'img/restaurant-screen-menu.png'],
   },
   {
-    id: 2,
+    id: 3,
     slug: 'silence-ca-tourne',
     title: 'Silence ça Tourne',
     category: 'design',
@@ -31,7 +46,7 @@ const projects = [
     liveLabel: 'voir le PDF',
   },
   {
-    id: 3,
+    id: 4,
     slug: 'logo-hecom',
     title: "Logo HECom'",
     category: 'design',
@@ -49,7 +64,7 @@ const projects = [
     liveLabel: 'voir la charte',
   },
   {
-    id: 4,
+    id: 5,
     slug: 'showreel-portfolio',
     title: 'Showreel BUT MMI',
     category: 'motion',
@@ -65,7 +80,7 @@ const projects = [
     liveLabel: 'voir le showreel',
   },
   {
-    id: 5,
+    id: 6,
     slug: 'motion-exs',
     title: 'EXS — Motion Design',
     category: 'motion',
@@ -81,7 +96,7 @@ const projects = [
     liveLabel: 'voir le motion',
   },
   {
-    id: 6,
+    id: 7,
     slug: 'historia-motion',
     title: 'Historia — Motion Design',
     category: 'motion',
@@ -97,7 +112,7 @@ const projects = [
     liveLabel: 'voir le motion',
   },
   {
-    id: 7,
+    id: 8,
     slug: 'poulie-3d',
     title: 'Poulie — Animation 3D',
     category: '3d',
@@ -113,7 +128,7 @@ const projects = [
     liveLabel: 'voir l\'animation',
   },
   {
-    id: 8,
+    id: 9,
     slug: 'blender-3d',
     title: 'Scènes 3D',
     category: '3d',
@@ -127,7 +142,7 @@ const projects = [
     detailImages: ['img/blender-glacon.png', 'img/blender-water.png'],
   },
   {
-    id: 9,
+    id: 10,
     slug: 'artcuisines-carte',
     title: 'Art Cuisines — Carte de visite',
     category: 'design',
@@ -143,7 +158,7 @@ const projects = [
     liveLabel: 'voir le PDF',
   },
   {
-    id: 10,
+    id: 11,
     slug: 'boostez-votre-com',
     title: "Boostez Votre Com'",
     category: 'design',
@@ -159,7 +174,7 @@ const projects = [
     liveLabel: 'voir le PDF',
   },
   {
-    id: 11,
+    id: 12,
     slug: 'maison-des-delices',
     title: 'Maison des Délices',
     category: 'web',
@@ -175,7 +190,7 @@ const projects = [
     liveLabel: 'voir le design',
   },
   {
-    id: 12,
+    id: 13,
     slug: 'graphiste-interview',
     title: 'Graphiste — En quoi ça consiste ?',
     category: 'vidéo',
@@ -194,7 +209,7 @@ const projects = [
 
 const CATEGORY_LABELS = {
   'vidéo': 'VIDÉO', 'web': 'WEB', 'design': 'DESIGN',
-  'motion': 'MOTION', '3d': '3D'
+  'motion': 'MOTION', '3d': '3D', 'photo': 'PHOTO'
 };
 
 /* ── Shared: build media placeholder HTML ──────────────────────────── */

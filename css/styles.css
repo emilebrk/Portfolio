@@ -176,9 +176,8 @@ button { font-family: inherit; cursor: pointer; }
   overflow-x: hidden;
   min-height: 0;
 }
-.browser__scroll::-webkit-scrollbar { width: 4px; }
-.browser__scroll::-webkit-scrollbar-track { background: transparent; }
-.browser__scroll::-webkit-scrollbar-thumb { background: var(--grey-border); border-radius: 2px; }
+.browser__scroll::-webkit-scrollbar { display: none; }
+.browser__scroll { scrollbar-width: none; -ms-overflow-style: none; }
 
 .browser__bar {
   background: var(--cream-dark);
