@@ -311,4 +311,144 @@ document.addEventListener('DOMContentLoaded', () => {
     redDot.title = "retour à l'accueil";
     redDot.addEventListener('click', () => { window.location.href = 'index.html'; });
   }
+
+  /* ── Easter egg : bouton jaune → réduit dans un dossier ─────────────── */
+  const yellowDot = document.querySelector('.browser__dot--yellow');
+  const pageEl    = document.querySelector('.page');
+  if (!yellowDot || !pageEl) return;
+
+  yellowDot.style.cursor = 'pointer';
+  yellowDot.title = 'Réduire';
+
+  /* Création du dossier */
+  const folder = document.createElement('div');
+  folder.className = 'desktop-folder';
+  folder.innerHTML = `
+    <svg class="desktop-folder__icon" viewBox="0 0 56 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 10C4 7.79 5.79 6 8 6H21L26 13H48C50.21 13 52 14.79 52 17V38C52 40.21 50.21 42 48 42H8C5.79 42 4 40.21 4 38V10Z" fill="#e8944a" opacity=".95"/>
+      <path d="M4 17H52V38C52 40.21 50.21 42 48 42H8C5.79 42 4 40.21 4 38V17Z" fill="#f5a623"/>
+      <rect x="18" y="24" width="20" height="12" rx="2" fill="rgba(255,255,255,.25)"/>
+      <line x1="24" y1="27" x2="24" y2="33" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+      <line x1="21" y1="30" x2="27" y2="30" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+    </svg>
+    <span class="desktop-folder__label">Portfolio</span>
+  `;
+  pageEl.appendChild(folder);
+
+  let minimized = false;
+
+  /* Ancrer le browser à des coordonnées explicites */
+  function anchorBrowser() {
+    const r = browser.getBoundingClientRect();
+    browser.style.top       = r.top  + 'px';
+    browser.style.left      = r.left + 'px';
+    browser.style.transform = 'none';
+  }
+
+  /* Retour au centre CSS */
+  function restoreCenter() {
+    browser.style.transition = '';
+    browser.style.top        = '50%';
+    browser.style.left       = '50%';
+    browser.style.transform  = 'translate(-50%, -50%)';
+  }
+
+  /* Clic jaune : réduire */
+  yellowDot.addEventListener('click', () => {
+    if (minimized) return;
+    minimized = true;
+
+    anchorBrowser();
+
+    /* Montrer le dossier pour récupérer sa position */
+    folder.classList.add('is-visible');
+    folder.style.opacity = '0';
+
+    requestAnimationFrame(() => {
+      const br = browser.getBoundingClientRect();
+      const fr = folder.getBoundingClientRect();
+
+      const bCX = br.left + br.width  / 2;
+      const bCY = br.top  + br.height / 2;
+      const fCX = fr.left + fr.width  / 2;
+      const fCY = fr.top  + fr.height / 2;
+
+      const dx = fCX - bCX;
+      const dy = fCY - bCY;
+
+      /* Fenêtre glisse vers le dossier */
+      browser.style.transition     = 'transform .48s cubic-bezier(.4,0,.2,1), opacity .38s ease';
+      browser.style.transformOrigin = 'center center';
+      browser.style.transform      = `translate(${dx}px, ${dy}px) scale(0.05)`;
+      browser.style.opacity        = '0';
+
+      /* Dossier apparaît quand la fenêtre arrive */
+      setTimeout(() => {
+        browser.style.visibility = 'hidden';
+
+        folder.style.transition = 'opacity .18s ease, transform .35s cubic-bezier(.34,1.56,.64,1)';
+        folder.style.opacity    = '1';
+        folder.style.transform  = 'scale(1.18)';
+        setTimeout(() => { folder.style.transform = 'scale(1)'; }, 60);
+
+        /* Petit "wobble" pour attirer l'attention */
+        setTimeout(() => {
+          folder.style.transition = 'transform .5s cubic-bezier(.34,1.56,.64,1)';
+          folder.style.transform  = 'rotate(-6deg) scale(1.05)';
+          setTimeout(() => {
+            folder.style.transform = 'rotate(4deg) scale(1)';
+            setTimeout(() => { folder.style.transform = 'rotate(0deg)'; }, 150);
+          }, 150);
+        }, 450);
+
+      }, 420);
+    });
+  });
+
+  /* Double-clic dossier : restaurer */
+  folder.addEventListener('dblclick', () => {
+    if (!minimized) return;
+    minimized = false;
+
+    /* Récupérer centre dossier avant de le cacher */
+    const fr  = folder.getBoundingClientRect();
+    const fCX = fr.left + fr.width  / 2;
+    const fCY = fr.top  + fr.height / 2;
+
+    /* Dossier se ferme */
+    folder.style.transition = 'opacity .18s ease, transform .18s ease';
+    folder.style.transform  = 'scale(1.35)';
+    folder.style.opacity    = '0';
+
+    setTimeout(() => {
+      folder.classList.remove('is-visible');
+      folder.style.transform = '';
+      folder.style.opacity   = '';
+
+      /* Browser part du centre du dossier, minuscule */
+      const bw = browser.offsetWidth;
+      const bh = browser.offsetHeight;
+
+      browser.style.transition     = 'none';
+      browser.style.visibility     = 'visible';
+      browser.style.opacity        = '1';
+      browser.style.left           = (fCX - bw / 2) + 'px';
+      browser.style.top            = (fCY - bh / 2) + 'px';
+      browser.style.transform      = 'scale(0.05)';
+      browser.style.transformOrigin = 'center center';
+
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const targetL = (window.innerWidth  - bw) / 2;
+        const targetT = (window.innerHeight - bh) / 2;
+
+        browser.style.transition = 'transform .52s cubic-bezier(.34,1.56,.64,1), top .48s cubic-bezier(.34,1.56,.64,1), left .48s cubic-bezier(.34,1.56,.64,1), opacity .25s ease';
+        browser.style.left       = targetL + 'px';
+        browser.style.top        = targetT + 'px';
+        browser.style.transform  = 'scale(1)';
+      }));
+
+      /* Restaurer le CSS centré */
+      setTimeout(restoreCenter, 540);
+    }, 200);
+  });
 });
