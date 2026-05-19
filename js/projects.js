@@ -292,7 +292,7 @@ function footerHTML() {
     </footer>`;
 }
 
-/* ── Immersive canvas: draggable browser window ────────────────────── */
+/* ── Browser scroll wrapper + dot navigation ────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   const browser = document.querySelector('.browser');
   const bar     = document.querySelector('.browser__bar');
@@ -304,114 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
   while (bar.nextSibling) scroll.appendChild(bar.nextSibling);
   browser.appendChild(scroll);
 
-  /* Convert CSS-centered position to explicit left/top on first drag */
-  let anchored = false;
-  function anchor() {
-    if (anchored) return;
-    const r = browser.getBoundingClientRect();
-    browser.style.top       = r.top + 'px';
-    browser.style.left      = r.left + 'px';
-    browser.style.transform = 'none';
-    anchored = true;
-  }
-
-  function recenter(animate = true) {
-    if (animate) {
-      browser.style.transition = 'top .35s var(--ease), left .35s var(--ease), transform .35s var(--ease)';
-      setTimeout(() => browser.style.transition = '', 380);
-    }
-    browser.style.top       = ((window.innerHeight - browser.offsetHeight) / 2) + 'px';
-    browser.style.left      = ((window.innerWidth  - browser.offsetWidth)  / 2) + 'px';
-    browser.style.transform = 'none';
-    anchored = true;
-  }
-
-  /* Canvas cursor dot */
-  const dot = document.createElement('div');
-  dot.className = 'canvas-dot';
-  const pageEl = document.querySelector('.page');
-  if (pageEl) pageEl.appendChild(dot);
-  document.addEventListener('mousemove', e => {
-    if (e.target.closest('.browser')) { dot.style.opacity = '0'; return; }
-    dot.style.opacity   = '1';
-    dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-  });
-
-  /* Drag with tilt */
-  let startX, startY, origL, origT, prevX, dragging = false;
-
-  function startDrag(cx, cy) {
-    anchor();
-    dragging = true;
-    startX = cx; startY = cy; prevX = cx;
-    origL  = browser.offsetLeft; origT = browser.offsetTop;
-    browser.classList.add('is-dragging');
-    document.body.style.userSelect = 'none';
-  }
-
-  function moveDrag(cx, cy) {
-    if (!dragging) return;
-    const tilt = Math.max(-6, Math.min(6, (cx - prevX) * 0.55));
-    prevX = cx;
-    browser.style.left      = (origL + cx - startX) + 'px';
-    browser.style.top       = (origT + cy - startY) + 'px';
-    browser.style.transform = `rotate(${tilt}deg)`;
-  }
-
-  function endDrag() {
-    if (!dragging) return;
-    dragging = false;
-    browser.classList.remove('is-dragging');
-    document.body.style.userSelect = '';
-    browser.style.transition = 'transform .3s cubic-bezier(.34,1.56,.64,1)';
-    browser.style.transform  = 'none';
-    setTimeout(() => browser.style.transition = '', 320);
-  }
-
-  bar.addEventListener('mousedown', e => {
-    if (e.target.closest('a, button, input')) return;
-    startDrag(e.clientX, e.clientY); e.preventDefault();
-  });
-  document.addEventListener('mousemove', e => moveDrag(e.clientX, e.clientY));
-  document.addEventListener('mouseup', endDrag);
-
-  /* Touch */
-  bar.addEventListener('touchstart', e => {
-    if (e.target.closest('a, button')) return;
-    startDrag(e.touches[0].clientX, e.touches[0].clientY); e.preventDefault();
-  }, { passive: false });
-  document.addEventListener('touchmove', e => {
-    if (dragging) moveDrag(e.touches[0].clientX, e.touches[0].clientY);
-  }, { passive: true });
-  document.addEventListener('touchend', endDrag);
-
-  /* Double-click bar → recenter */
-  bar.addEventListener('dblclick', e => {
-    if (e.target.closest('a, button')) return;
-    recenter();
-  });
-
-  /* Green dot → toggle fullscreen */
-  const greenDot = document.querySelector('.browser__dot--green');
-  if (greenDot) {
-    greenDot.style.cursor = 'pointer';
-    let maximized = false;
-    greenDot.addEventListener('click', () => {
-      anchor();
-      if (!maximized) {
-        browser.style.transition = 'top .3s var(--ease), left .3s var(--ease), width .3s var(--ease), max-height .3s var(--ease)';
-        browser.style.top = '1.5vh'; browser.style.left = '1.5vw';
-        browser.style.width = '97vw'; browser.style.maxHeight = '97vh';
-        maximized = true;
-      } else {
-        browser.style.width = ''; browser.style.maxHeight = '';
-        recenter(false);
-        maximized = false;
-      }
-      setTimeout(() => browser.style.transition = '', 340);
-    });
-  }
-
   /* Red dot → back to index */
   const redDot = document.querySelector('.browser__dot--red');
   if (redDot && !window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') {
@@ -419,24 +311,4 @@ document.addEventListener('DOMContentLoaded', () => {
     redDot.title = "retour à l'accueil";
     redDot.addEventListener('click', () => { window.location.href = 'index.html'; });
   }
-
-  /* Resize handle */
-  const resizeHandle = document.createElement('div');
-  resizeHandle.className = 'browser__resize';
-  browser.appendChild(resizeHandle);
-  let resizing = false, rsX, rsY, rsW, rsH;
-  resizeHandle.addEventListener('mousedown', e => {
-    anchor();
-    resizing = true;
-    rsX = e.clientX; rsY = e.clientY;
-    rsW = browser.offsetWidth; rsH = browser.offsetHeight;
-    document.body.style.userSelect = 'none';
-    e.preventDefault(); e.stopPropagation();
-  });
-  document.addEventListener('mousemove', e => {
-    if (!resizing) return;
-    browser.style.width     = Math.max(480, rsW + e.clientX - rsX) + 'px';
-    browser.style.maxHeight = Math.max(320, rsH + e.clientY - rsY) + 'px';
-  });
-  document.addEventListener('mouseup', () => { resizing = false; });
 });
