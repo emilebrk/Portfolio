@@ -370,10 +370,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (minimized) return;
     minimized = true;
 
-    anchorBrowser();
-
+    /* Lire les rects AVANT d'écrire quoi que ce soit (évite double reflow) */
     const br  = browser.getBoundingClientRect();
     const fr  = folder.getBoundingClientRect();
+
+    /* Ancrer à des px fixes (sans transition) */
+    browser.style.transition      = 'none';
+    browser.style.top             = br.top  + 'px';
+    browser.style.left            = br.left + 'px';
+    browser.style.transform       = 'none';
+    browser.style.transformOrigin = 'center center';
+    browser.style.willChange      = 'transform, opacity';
+
     const bCX = br.left + br.width  / 2;
     const bCY = br.top  + br.height / 2;
     const fCX = fr.left + fr.width  / 2;
@@ -381,18 +389,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const dx  = fCX - bCX;
     const dy  = fCY - bCY;
 
-    /* La fenêtre glisse, rétrécit et pivote légèrement vers le dossier */
-    requestAnimationFrame(() => {
-      browser.style.transition = 'transform .52s cubic-bezier(.6,0,.2,1), opacity .42s ease';
+    /* Animer uniquement transform + opacity (GPU, pas de layout) */
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      browser.style.transition = 'transform .5s cubic-bezier(.55,0,.1,1), opacity .38s ease';
       browser.style.transform  = `translate(${dx}px, ${dy}px) scale(0.04) rotate(-4deg)`;
       browser.style.opacity    = '0';
-    });
+    }));
 
-    /* Une fois arrivée : masquer la fenêtre, le dossier était déjà là */
     setTimeout(() => {
       browser.style.visibility = 'hidden';
+      browser.style.willChange = '';
       folder.classList.add('is-minimized');
-    }, 500);
+    }, 520);
   });
 
   /* ── Restaurer ── */
@@ -401,44 +409,46 @@ document.addEventListener('DOMContentLoaded', () => {
     minimized = false;
     folder.classList.remove('is-minimized');
 
-    /* Centre du dossier = point de départ de la fenêtre */
     const fr  = folder.getBoundingClientRect();
     const fCX = fr.left + fr.width  / 2;
     const fCY = fr.top  + fr.height / 2;
+    const w   = window.innerWidth;
+    const h   = window.innerHeight;
     const bw  = browser.offsetWidth;
     const bh  = browser.offsetHeight;
 
-    /* Flash d'ouverture sur le dossier */
-    folder.style.transition = 'transform .22s cubic-bezier(.34,1.56,.64,1)';
-    folder.style.transform  = 'scale(1.25)';
-    setTimeout(() => { folder.style.transform = 'scale(1)'; folder.style.transition = ''; }, 220);
+    /* Flash d'ouverture du dossier */
+    folder.style.transition = 'transform .2s cubic-bezier(.34,1.56,.64,1)';
+    folder.style.transform  = 'scale(1.22)';
+    setTimeout(() => { folder.style.transform = 'scale(1)'; folder.style.transition = ''; }, 200);
 
-    /* Fenêtre part du dossier, minuscule */
+    /*
+     * Placer le browser au CENTRE (sans transition) avec un transform offset
+     * qui le fait visuellement apparaître au niveau du dossier.
+     * On animera uniquement transform + opacity → zéro layout, 60 fps.
+     */
+    const offsetX = fCX - w / 2;
+    const offsetY = fCY - h / 2;
+
     browser.style.transition      = 'none';
     browser.style.visibility      = 'visible';
     browser.style.opacity         = '0';
-    browser.style.left            = (fCX - bw / 2) + 'px';
-    browser.style.top             = (fCY - bh / 2) + 'px';
-    browser.style.transform       = 'scale(0.04) rotate(-4deg)';
+    browser.style.left            = ((w - bw) / 2) + 'px';
+    browser.style.top             = ((h - bh) / 2) + 'px';
     browser.style.transformOrigin = 'center center';
+    browser.style.transform       = `translate(${offsetX}px, ${offsetY}px) scale(0.04) rotate(-4deg)`;
+    browser.style.willChange      = 'transform, opacity';
 
-    /* Délai léger puis expansion vers le centre */
     requestAnimationFrame(() => requestAnimationFrame(() => {
-      const targetL = (window.innerWidth  - bw) / 2;
-      const targetT = (window.innerHeight - bh) / 2;
-      browser.style.transition = [
-        'transform .58s cubic-bezier(.34,1.56,.64,1)',
-        'top .52s cubic-bezier(.34,1.56,.64,1)',
-        'left .52s cubic-bezier(.34,1.56,.64,1)',
-        'opacity .3s ease'
-      ].join(',');
-      browser.style.left      = targetL + 'px';
-      browser.style.top       = targetT + 'px';
-      browser.style.transform = 'scale(1) rotate(0deg)';
-      browser.style.opacity   = '1';
+      browser.style.transition = 'transform .56s cubic-bezier(.34,1.56,.64,1), opacity .28s ease';
+      browser.style.transform  = 'translate(0,0) scale(1) rotate(0deg)';
+      browser.style.opacity    = '1';
     }));
 
-    /* Restaurer le CSS centré + reposionner le dossier */
-    setTimeout(() => { restoreCenter(); positionFolder(); }, 580);
+    setTimeout(() => {
+      browser.style.willChange = '';
+      restoreCenter();
+      positionFolder();
+    }, 600);
   });
 });
