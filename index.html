@@ -68,15 +68,15 @@
             <!-- Mini stats -->
             <div style="display:flex;gap:2rem;padding-top:1.25rem;border-top:1px solid var(--grey-border)">
               <div>
-                <div style="font-family:var(--hand);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">12</div>
+                <div data-count="13" style="font-family:var(--hand);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">13</div>
                 <div style="font-family:var(--mono);font-size:.55rem;color:var(--grey-mid);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem">projets</div>
               </div>
               <div>
-                <div style="font-family:var(--hand);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">5</div>
+                <div data-count="5" style="font-family:var(--hand);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">5</div>
                 <div style="font-family:var(--mono);font-size:.55rem;color:var(--grey-mid);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem">disciplines</div>
               </div>
               <div>
-                <div style="font-family:var(--hand);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">2026</div>
+                <div data-count="2026" style="font-family:var(--hand);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">2026</div>
                 <div style="font-family:var(--mono);font-size:.55rem;color:var(--grey-mid);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem">diplôme BUT MMI</div>
               </div>
             </div>
@@ -123,6 +123,7 @@
   </div><!-- .browser -->
 </div><!-- .page -->
 
+<script src="js/animations.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/projects.js"></script>
 <script>
@@ -130,8 +131,8 @@
   const current = projects[0];
   const visual = current.cover
     ? `<div style="position:relative;padding-top:56.25%;border:1px solid var(--grey-border);overflow:hidden;background:var(--cream-dark)">
-        <img src="${current.cover}" alt="${current.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"/>
-        <a href="project.html?slug=${current.slug}" style="position:absolute;inset:0;z-index:2" aria-label="Voir ${current.title}"></a>
+        <img src="${current.cover}" alt="${current.title}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"/>
+        <a href="project.html?slug=${current.slug}" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:2" aria-label="Voir ${current.title}"></a>
         <span style="position:absolute;top:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.6);z-index:1;pointer-events:none">+</span>
         <span style="position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.6);z-index:1;pointer-events:none">+</span>
         <span style="position:absolute;bottom:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.6);z-index:1;pointer-events:none">+</span>

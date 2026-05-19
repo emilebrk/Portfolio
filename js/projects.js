@@ -5,8 +5,8 @@ const projects = [
     title: 'UTMB Alsace',
     category: 'photo',
     year: 2026,
-    shortDesc: "Reportage photo lors de l'UTMB Alsace — prise de vue en RAW et retouche sur Lightroom.",
-    longDesc: "Reportage photographique réalisé lors de l'UTMB Alsace 2026. Prise de vue en RAW avec un appareil hybride, retouche complète sur Adobe Lightroom : travail sur la dynamique des tons, rehaussement des couleurs naturelles et gestion de l'exposition pour rendre la lumière dramatique du ciel alsacien. Chaque photo est traitée individuellement pour maximiser le rendu cinématographique tout en restant fidèle à l'ambiance du terrain.",
+    shortDesc: "Photos prises lors de l'UTMB Alsace 2026, en RAW, retouchées sur Lightroom.",
+    longDesc: "J'ai photographié l'UTMB Alsace 2026 avec un hybride, en RAW. Retouche sur Lightroom photo par photo : exposition, tons, couleurs. L'idée c'était de rester proche de ce que j'avais vu sur place, sans en faire trop.",
     role: ['photographie', 'retouche', 'étalonnage'],
     tools: ['Lightroom', 'Appareil RAW'],
     context: ['événement sportif', 'UTMB Alsace', 'mai 2026'],
@@ -20,8 +20,8 @@ const projects = [
     title: 'Restaurant de la Tour',
     category: 'web',
     year: 2026,
-    shortDesc: "Site vitrine pour une winstub alsacienne à Turckheim. Design, développement & intégration multilingue.",
-    longDesc: "Commande client pour le Restaurant de la Tour, winstub alsacienne fondée en 1923 à Turckheim. Direction artistique avec typographie gothique Deutsch Gothic, identité visuelle sobre et chaleureuse. Intégration trilingue FR/DE/EN pour une clientèle internationale, système de réservation, galerie photos et carte des menus. Réalisé en autonomie totale — de la maquette Figma au déploiement.",
+    shortDesc: "Site vitrine pour une winstub alsacienne à Turckheim. Design, développement et intégration trilingue.",
+    longDesc: "Commande pour le Restaurant de la Tour, winstub à Turckheim fondée en 1923. Typo gothique Deutsch Gothic, interface trilingue FR/DE/EN. J'ai tout géré seul : maquette Figma, développement, déploiement. Le site inclut un système de réservation et une carte des menus.",
     role: ['UI/UX design', 'développement', 'intégration'],
     tools: ['Figma', 'HTML/CSS', 'JavaScript'],
     context: ['commande client', 'site multilingue', 'Turckheim, Alsace'],
@@ -35,8 +35,8 @@ const projects = [
     title: 'Silence ça Tourne',
     category: 'design',
     year: 2025,
-    shortDesc: "Création du logo, de la carte de visite et des mockups pour Silence ça Tourne, vidéaste monteur.",
-    longDesc: "Commande directe pour Silence ça Tourne, vidéaste monteur indépendant. Parti pris graphique fort : mascotte loup au caractère expressif, logotype en noir absolu pour une polyvalence maximale. Livrables complets — logotype principal, déclinaisons monochrome et négatif, carte de visite recto/verso et mockups de mise en situation. Identité pensée pour durer, adaptable à tous les supports.",
+    shortDesc: "Logo, carte de visite et mockups pour Silence ça Tourne, vidéaste monteur.",
+    longDesc: "Commande pour Silence ça Tourne, vidéaste monteur freelance. Un loup comme mascotte, logotype en noir pour qu'il passe partout. Livré avec les déclinaisons (monochrome, négatif), la carte de visite recto/verso et des mockups.",
     role: ['direction artistique', 'identité visuelle', 'print'],
     tools: ['Illustrator', 'Photoshop'],
     context: ['commande client', 'travail solo', '2025'],
@@ -51,8 +51,8 @@ const projects = [
     title: "Logo HECom'",
     category: 'design',
     year: 2025,
-    shortDesc: "Création du logo et de la charte graphique pour HECom'. Direction artistique, identité visuelle, déclinaisons.",
-    longDesc: "Commande associative pour HECom', association étudiante en communication. Création du logo et de la charte graphique complète en autonomie totale : symbole double chevron évoquant dynamisme et progression, typographie Montserrat Extra Bold, charte couleur bleu/blanc avec déclinaisons sur fond sombre, noir et monochrome. Dossier livré avec guide d'utilisation des déclinaisons.",
+    shortDesc: "Logo et charte graphique pour HECom', association étudiante en communication.",
+    longDesc: "Logo et charte pour HECom', une asso étudiante en com'. Double chevron comme symbole, Montserrat Extra Bold, palette bleu/blanc. Déclinaisons fond sombre, noir et monochrome, avec un guide d'utilisation.",
     role: ['direction artistique', 'identité visuelle', 'charte graphique'],
     tools: ['Illustrator', 'InDesign'],
     context: ['commande associative', 'travail solo', 'janvier 2025'],
@@ -69,8 +69,8 @@ const projects = [
     title: 'Showreel BUT MMI',
     category: 'motion',
     year: 2025,
-    shortDesc: "Montage de mes réalisations BUT MMI — animation typographique, 3D et vidéo, sur After Effects.",
-    longDesc: "Showreel compilant trois ans de réalisations BUT MMI. Direction artistique de l'intro typographique animée — lettres multicolores en texture, timing précis sur la musique. Enchaînement fluide de séquences motion design, 3D et vidéo : chaque cut raconte une compétence. Monté et composité intégralement sur After Effects et Premiere Pro.",
+    shortDesc: "Showreel BUT MMI : animation typographique, 3D et vidéo, monté sur After Effects.",
+    longDesc: "Trois ans de projets BUT MMI montés en showreel. L'intro est une animation typographique avec des lettres texturées, calée sur la musique. Montage et compo intégralement sur After Effects et Premiere Pro.",
     role: ['motion design', 'montage', 'direction artistique'],
     tools: ['After Effects', 'Premiere Pro'],
     context: ['projet personnel', 'BUT MMI', '2025'],
@@ -85,8 +85,8 @@ const projects = [
     title: 'EXS — Motion Design',
     category: 'motion',
     year: 2025,
-    shortDesc: "Animation en boucle d'un personnage expressif, réalisée sur After Effects dans le cadre des cours BUT MMI.",
-    longDesc: "Motion design réalisé sur After Effects dans le cadre des cours BUT MMI. Animation en boucle d'un visage stylisé sur fond bleu électrique — travail sur les expressions, le rigging et la fluidité du mouvement.",
+    shortDesc: "Animation en boucle d'un personnage expressif, réalisée sur After Effects en cours BUT MMI.",
+    longDesc: "Exercice de motion design pour les cours BUT MMI, sur After Effects. Animation en boucle d'un visage stylisé sur fond bleu électrique : rigging des expressions, travail sur la fluidité.",
     role: ['motion design', 'animation', 'rigging'],
     tools: ['After Effects'],
     context: ['projet universitaire', 'BUT MMI', '2025'],
@@ -101,8 +101,8 @@ const projects = [
     title: 'Historia — Motion Design',
     category: 'motion',
     year: 2025,
-    shortDesc: "Générique animé pour un magazine d'histoire fictif. Typographie, sculptures antiques et motion éditorial.",
-    longDesc: "Conception et animation du générique d'ouverture d'Historia, magazine télévisé fictif dédié à l'histoire antique. Direction artistique autour du contraste entre typographie sérif contemporaine et sculptures gréco-romaines, sur fond corail et fond sonore cinématographique.",
+    shortDesc: "Générique d'ouverture pour Historia, magazine télé fictif sur l'Antiquité.",
+    longDesc: "Générique d'ouverture pour Historia, magazine télé fictif sur l'Antiquité. Typo sérif contemporaine sur fond corail, avec des sculptures gréco-romaines en image. Fait sur After Effects.",
     role: ['motion design', 'direction artistique', 'animation'],
     tools: ['After Effects', 'Illustrator'],
     context: ['projet universitaire', 'BUT MMI', '2025'],
@@ -117,8 +117,8 @@ const projects = [
     title: 'Poulie — Animation 3D',
     category: '3d',
     year: 2025,
-    shortDesc: "Animation 3D d'un mécanisme de poulie sur Blender — modélisation, rigging physique et rendu EEVEE.",
-    longDesc: "Modélisation et animation d'un mécanisme de poulie dans Blender. Simulation de physique sur la corde et le poids, rendu EEVEE avec fond de grange reconstituée. Travail sur la mécanique d'animation et les contraintes d'objets.",
+    shortDesc: "Mécanisme de poulie modélisé et animé sur Blender, avec simulation physique et rendu EEVEE.",
+    longDesc: "Mécanisme de poulie modélisé et animé dans Blender. Simulation physique sur la corde et le poids, rendu EEVEE avec une grange en fond. Animation par contraintes d'objets.",
     role: ['modélisation 3D', 'animation', 'rendu'],
     tools: ['Blender'],
     context: ['projet universitaire', 'BUT MMI', '2025'],
@@ -133,8 +133,8 @@ const projects = [
     title: 'Scènes 3D',
     category: '3d',
     year: 2025,
-    shortDesc: "Modélisation et rendu photoréaliste de natures mortes sur Blender — fruits, verres et glaçons.",
-    longDesc: "Exercices de modélisation 3D réalisés dans le cadre des cours BUT MMI. Création de scènes photoréalistes sur Blender : natures mortes avec fruits, verres en verre et glaçons. Travail sur les matériaux, la lumière et le rendu cycles.",
+    shortDesc: "Natures mortes sur Blender : fruits, verres et glaçons en rendu Cycles.",
+    longDesc: "Exercices de modélisation pour les cours BUT MMI. Natures mortes sur Blender : fruits, verres, glaçons. Matériaux, éclairage et rendu Cycles.",
     role: ['modélisation 3D', 'rendu', 'éclairage'],
     tools: ['Blender'],
     context: ['projet universitaire', 'BUT MMI', 'octobre 2025'],
@@ -147,8 +147,8 @@ const projects = [
     title: 'Art Cuisines — Carte de visite',
     category: 'design',
     year: 2024,
-    shortDesc: "Carte de visite recto/verso pour un architecte d'intérieur — déclinaisons fond sombre et blanc, format horizontal et vertical.",
-    longDesc: "Conception de la carte de visite de David Iltis, CEO et architecte d'intérieur chez Art Cuisines (Mulhouse). Trois déclinaisons : fond navy, fond blanc et format vertical — même logique graphique sobre avec point rouge comme accent.",
+    shortDesc: "Carte de visite recto/verso pour un architecte d'intérieur, 3 déclinaisons.",
+    longDesc: "Carte de visite pour David Iltis, architecte d'intérieur chez Art Cuisines à Mulhouse. Trois versions : fond navy, fond blanc, format vertical. Même logique sobre dans les trois, avec un point rouge comme seul accent couleur.",
     role: ['print', 'identité visuelle'],
     tools: ['Illustrator', 'InDesign'],
     context: ['stage Sandro Matera', 'Studio Graphique Web & Image', '2024'],
@@ -163,8 +163,8 @@ const projects = [
     title: "Boostez Votre Com'",
     category: 'design',
     year: 2024,
-    shortDesc: "Création du logo pour une offre communication du studio Sandro Matera — 4 déclinaisons couleur avec pictogrammes.",
-    longDesc: "Conception du logotype \"Boostez Votre Com'\" dans le cadre de mon stage au studio Sandro Matera (Studio Graphique, Web & Image). Typographie impactante en italique gras, déclinaisons avec mégaphone ou fusée, coloris rose/navy et bleu/navy.",
+    shortDesc: "Logo pour l'offre communication du studio Sandro Matera, 4 déclinaisons couleur.",
+    longDesc: "Logo créé pendant mon stage chez Sandro Matera. Typo en italique gras, deux pictogrammes au choix (mégaphone ou fusée), coloris rose/navy et bleu/navy.",
     role: ['identité visuelle', 'logotype', 'déclinaisons'],
     tools: ['Illustrator', 'InDesign'],
     context: ['stage Sandro Matera', 'Studio Graphique Web & Image', '2024'],
@@ -179,8 +179,8 @@ const projects = [
     title: 'Maison des Délices',
     category: 'web',
     year: 2024,
-    shortDesc: "Webdesign pour un restaurant japonais fictif — hero sombre, carte filtrée, avis clients et carte Google.",
-    longDesc: "Conception du design d'un site web pour la Maison des Délices, restaurant japonais fictif à Mulhouse. Interface sombre et élégante pour la page d'accueil, système de commande en ligne avec filtres par catégorie (Gyoza, Maki, Sashimi…), section avis clients et carte interactive.",
+    shortDesc: "UI design pour un restaurant japonais fictif : page hero, carte filtrée, avis et carte Google.",
+    longDesc: "Design UI pour la Maison des Délices, resto japonais fictif à Mulhouse. Page d'accueil sombre, commande en ligne avec filtres par catégorie (Gyoza, Maki, Sashimi...), section avis et carte. Fait sur Figma.",
     role: ['UI/UX design', 'webdesign'],
     tools: ['Figma'],
     context: ['projet universitaire', 'BUT MMI', '2024'],
@@ -195,8 +195,8 @@ const projects = [
     title: 'Graphiste — En quoi ça consiste ?',
     category: 'vidéo',
     year: 2024,
-    shortDesc: "Interview d'une graphiste — tournage, montage et étalonnage dans le cadre des cours BUT MMI.",
-    longDesc: "Réalisation d'un mini-documentaire autour du métier de graphiste. Interview filmée en conditions réelles, b-roll dans l'atelier, montage rythmé et habillage typographique. Travail en équipe sur l'ensemble de la chaîne de production vidéo.",
+    shortDesc: "Mini-doc sur le métier de graphiste, pour les cours BUT MMI : tournage, montage et étalonnage.",
+    longDesc: "Mini-doc sur le métier de graphiste, pour les cours BUT MMI. Interview filmée, b-roll dans l'atelier, montage et habillage typo. Projet en équipe, du tournage au rendu final.",
     role: ['réalisation', 'cadre', 'montage', 'étalonnage'],
     tools: ['Premiere Pro', 'DaVinci Resolve'],
     context: ['projet universitaire', 'BUT MMI', '2024'],
@@ -242,7 +242,7 @@ function mediaHTML(ratio, label) {
 function cardHTML(p, showDesc = false) {
   const visual = p.cover
     ? `<div style="position:relative;padding-top:56.25%;overflow:hidden;background:${p.imageFit==='contain'?'var(--cream-dark)':'#ede9e1'}">
-        <img src="${p.cover}" alt="${p.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:${p.imageFit||'cover'};display:block"/>
+        <img src="${p.cover}" alt="${p.title}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:${p.imageFit||'cover'};display:block"/>
         <span style="position:absolute;top:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
         <span style="position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
         <span style="position:absolute;bottom:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
@@ -329,7 +329,8 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Canvas cursor dot */
   const dot = document.createElement('div');
   dot.className = 'canvas-dot';
-  page.appendChild(dot);
+  const pageEl = document.querySelector('.page');
+  if (pageEl) pageEl.appendChild(dot);
   document.addEventListener('mousemove', e => {
     if (e.target.closest('.browser')) { dot.style.opacity = '0'; return; }
     dot.style.opacity   = '1';

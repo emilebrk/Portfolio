@@ -82,6 +82,15 @@ a { color: inherit; text-decoration: none; }
 img, video { display: block; max-width: 100%; }
 button { font-family: inherit; cursor: pointer; }
 
+/* ─── Transition d'entrée (CSS — avant que JS charge) ─────────────── */
+@keyframes page-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+html {
+  animation: page-in .32s ease both;
+}
+
 /* ─── Page canvas ──────────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translate(-50%, calc(-50% + 14px)); }
@@ -175,6 +184,8 @@ button { font-family: inherit; cursor: pointer; }
   overflow-y: auto;
   overflow-x: hidden;
   min-height: 0;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 .browser__scroll::-webkit-scrollbar { display: none; }
 .browser__scroll { scrollbar-width: none; -ms-overflow-style: none; }
@@ -276,7 +287,9 @@ button { font-family: inherit; cursor: pointer; }
   letter-spacing: -.02em;
   color: var(--ink);
   line-height: 1;
+  transition: opacity .2s var(--ease);
 }
+.site-logo:hover { opacity: .7; }
 .site-nav { display: flex; gap: 1.75rem; }
 .site-nav a {
   font-family: var(--mono);
@@ -630,6 +643,36 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 700px) {
   .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ─── Status dot pulse ─────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .3; transform: scale(.75); }
+}
+.status-dot {
+  animation: pulse-dot 1.8s ease-in-out infinite;
+  display: inline-flex;
+}
+
+/* ─── Scroll reveal ────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Card image zoom ──────────────────────────────────────────────── */
+.card__media img {
+  transition: transform .45s var(--ease);
+  will-change: transform;
+}
+.card:hover .card__media img {
+  transform: scale(1.05);
 }
 
 /* ─── Scrollbar ────────────────────────────────────────────────────── */

@@ -48,6 +48,7 @@
   </div>
 </div>
 
+<script src="js/animations.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/projects.js"></script>
 <script>
@@ -66,12 +67,12 @@
     <div style="padding:2rem 2rem 0">
       ${p.cover
         ? `<div style="position:relative;padding-top:52%;overflow:hidden;background:transparent">
-             <img src="${p.detailCover || p.cover}" alt="${p.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"/>
+             <img src="${p.detailCover || p.cover}" alt="${p.title}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"/>
              <span style="position:absolute;top:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
              <span style="position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
              <span style="position:absolute;bottom:5px;left:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
              <span style="position:absolute;bottom:5px;right:7px;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.7);pointer-events:none">+</span>
-             ${p.liveUrl ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" style="position:absolute;inset:0;z-index:2" title="Voir le site en ligne"></a>` : ''}
+             ${p.liveUrl ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:2" title="Voir le site en ligne"></a>` : ''}
            </div>`
         : mediaHTML('21/9', 'visuel principal du projet')
       }
@@ -82,7 +83,7 @@
       ${p.detailImages
         ? p.detailImages.map(src => `
           <div style="position:relative;padding-top:56.25%;overflow:hidden;border:1px solid var(--grey-border)">
-            <img src="${src}" alt="${p.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"/>
+            <img src="${src}" alt="${p.title}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"/>
           </div>`).join('')
         : mediaHTML('16/9', 'détail projet') + mediaHTML('16/9', 'détail projet')
       }

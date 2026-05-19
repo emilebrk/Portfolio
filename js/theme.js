@@ -33,19 +33,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ── Page transitions (fade out on internal navigation) ────────────────
-  var browser = document.querySelector('.browser');
-  if (browser) {
-    document.addEventListener('click', function (e) {
-      var link = e.target.closest('a[href]');
-      if (!link) return;
-      var href = link.getAttribute('href');
-      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http') || link.target === '_blank') return;
-      e.preventDefault();
-      browser.style.transition = 'opacity .18s ease, transform .18s ease';
-      browser.style.opacity = '0';
-      browser.style.transform = 'translate(-50%, calc(-50% + 10px))';
-      setTimeout(function () { window.location.href = href; }, 190);
-    });
-  }
+  // Les transitions de navigation sont gérées exclusivement par animations.js
 });

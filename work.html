@@ -69,6 +69,7 @@
   </div>
 </div>
 
+<script src="js/animations.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/projects.js"></script>
 <script>
@@ -111,6 +112,7 @@
 
     // grid
     document.getElementById('projects-grid').innerHTML = visible.map(p => cardHTML(p)).join('');
+    if (typeof gridFadeIn === 'function') gridFadeIn('projects-grid');
 
     // load more
     const btn = document.getElementById('btn-load');
