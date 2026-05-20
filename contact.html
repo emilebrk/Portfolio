@@ -31,136 +31,105 @@
       </nav>
     </header>
 
-    <style>
-      .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 260px;
-        gap: 3rem;
-        align-items: start;
-      }
-      .contact-sidebar {
-        border-left: 1px solid var(--grey-border);
-        padding-left: 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-      .contact-sidebar__block {
-        padding-bottom: 1.1rem;
-        margin-bottom: 1.1rem;
-        border-bottom: 1px solid var(--grey-border);
-      }
-      .contact-sidebar__block:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-      .contact-btn {
-        font-family: var(--mono);
-        font-size: .72rem;
-        letter-spacing: .04em;
-        padding: .65rem 1.2rem;
-        border-radius: 4px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: .4rem;
-        transition: opacity .2s;
-        cursor: pointer;
-      }
-      .contact-btn:hover { opacity: .8; }
-      .contact-btn--primary {
-        background: var(--orange);
-        color: #fff;
-        border: 1.5px solid var(--orange);
-      }
-      .contact-btn--secondary {
-        background: transparent;
-        color: var(--orange);
-        border: 1.5px solid var(--orange);
-      }
-      @media (max-width: 640px) {
-        .contact-grid { grid-template-columns: 1fr; gap: 2rem; padding-left: 0 !important; }
-        .contact-sidebar { border-left: none; padding-left: 0; border-top: 1px solid var(--grey-border); padding-top: 1.5rem; }
-        .contact-btns { flex-direction: column; }
-        .contact-btns .contact-btn { width: 100%; justify-content: center; box-sizing: border-box; padding: .65rem 1.2rem !important; font-size: .72rem !important; }
-        .contact-main p { margin-bottom: 1.25rem !important; }
-        .contact-main { padding: 1.5rem 1.25rem 2rem !important; }
-        .contact-main h1 { font-size: 2.5rem !important; line-height: 1.1 !important; }
-        .contact-email { font-size: .78rem !important; overflow-wrap: break-word; word-break: break-all; display: block !important; max-width: 100%; }
-        .contact-main p { font-size: .72rem; }
-        .contact-main p br { display: none; }
-      }
-    </style>
+    <main style="background:var(--white)">
 
-    <main class="contact-main" style="background:var(--white);padding:2.5rem 2.5rem 3rem;display:flex;flex-direction:column;justify-content:center;flex:1">
+      <!-- ── Hero ──────────────────────────────────────────────── -->
+      <section style="padding:2.5rem 2rem 2rem;border-bottom:1px solid var(--grey-border)">
 
-      <span class="label" style="display:block;margin-bottom:2rem">contact</span>
-
-      <div class="contact-grid" style="padding-left:1.5rem">
-
-        <!-- ── Contenu principal ───────────────────────────────── -->
-        <div>
-
-          <!-- Titre -->
-          <h1 style="font-family:var(--hand);font-size:clamp(2.5rem,5vw,3.5rem);font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem;max-width:580px">
-            Un projet, une idée,<br>
-            ou une opportunité <span style="color:var(--orange)">?</span>
-          </h1>
-
-          <!-- Description -->
-          <p style="font-family:var(--body);font-size:.85rem;color:var(--grey-mid);line-height:1.7;margin-bottom:2.5rem;max-width:460px">
-            En alternance jusqu'en 2026, je cherche ce qui vient après :<br>
-            CDD, CDI ou freelance.
-          </p>
-
-          <!-- Boutons -->
-          <div class="contact-btns" style="display:flex;gap:.85rem;flex-wrap:wrap">
-            <a href="mailto:emile.brenckle@gmail.com" class="contact-btn contact-btn--primary" style="font-size:.78rem;padding:.8rem 1.6rem">
-              Envoyer un mail →
-            </a>
-            <a href="CV-ID-26-V.pdf"
-               target="_blank" rel="noopener noreferrer"
-               class="contact-btn contact-btn--secondary" style="font-size:.78rem;padding:.8rem 1.6rem">
-              Voir mon CV ↗
-            </a>
-          </div>
-
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.75rem">
+          <span class="label">CONTACT</span>
+          <span style="font-family:var(--mono);font-size:.58rem;color:var(--grey-mid);letter-spacing:.06em;display:inline-flex;align-items:center;gap:.4rem">
+            <span style="color:var(--orange);font-size:.45rem">●</span>disponible · Strasbourg
+          </span>
         </div>
 
-        <!-- ── Sidebar ─────────────────────────────────────────── -->
-        <div class="contact-sidebar">
+        <div style="display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem">
+          <div>
+            <h1 style="font-family:var(--hand);font-size:clamp(2.8rem,5.5vw,4rem);font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-.03em;margin-bottom:1rem">
+              Un projet, une idée,<br>
+              ou une opportunité<span style="color:var(--orange)"> ?</span>
+            </h1>
+            <p style="font-family:var(--body);font-size:.82rem;color:var(--grey-mid);line-height:1.7;max-width:420px">
+              En alternance jusqu'en 2026, je cherche ce qui vient après :<br>
+              CDD, CDI ou freelance — web, vidéo, design.
+            </p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.5rem;text-align:right;padding-bottom:.15rem">
+            <span style="font-family:var(--mono);font-size:.55rem;color:var(--grey-mid);letter-spacing:.08em;text-transform:uppercase">réponse en</span>
+            <span style="font-family:var(--hand);font-size:2rem;font-weight:700;color:var(--ink);line-height:1">24h</span>
+          </div>
+        </div>
 
-          <div class="contact-sidebar__block">
-            <div style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.55rem">Statut</div>
-            <div style="display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.67rem;color:var(--ink);letter-spacing:.03em">
-              <span class="status-dot" style="color:var(--orange);font-size:.45rem">●</span>
-              En alternance
+      </section>
+
+      <!-- ── Email + actions ────────────────────────────────────── -->
+      <section style="padding:2rem;border-bottom:1px solid var(--grey-border)">
+        <div style="display:grid;grid-template-columns:1fr 1px 220px;gap:0;align-items:start">
+
+          <!-- Email + boutons -->
+          <div style="padding-right:2rem">
+            <div style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.65rem">par mail</div>
+            <a href="mailto:emile.brenckle@gmail.com"
+               style="font-family:var(--hand);font-size:clamp(1.3rem,2.8vw,1.9rem);font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-.01em;display:block;margin-bottom:1.5rem;word-break:break-all;transition:color .2s"
+               onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='var(--ink)'">
+              emile.brenckle@gmail.com
+            </a>
+            <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+              <a href="mailto:emile.brenckle@gmail.com"
+                 style="font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;padding:.7rem 1.4rem;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;background:var(--orange);color:#fff;border:1.5px solid var(--orange);transition:opacity .2s"
+                 onmouseover="this.style.opacity='.82'" onmouseout="this.style.opacity='1'">
+                Envoyer un mail →
+              </a>
+              <a href="CV-ID-26-V.pdf" target="_blank" rel="noopener noreferrer"
+                 style="font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;padding:.7rem 1.4rem;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;background:transparent;color:var(--orange);border:1.5px solid var(--orange);transition:opacity .2s"
+                 onmouseover="this.style.opacity='.72'" onmouseout="this.style.opacity='1'">
+                Voir mon CV ↗
+              </a>
             </div>
           </div>
 
-          <div class="contact-sidebar__block">
-            <div style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.55rem">Pour la suite</div>
-            <div style="font-family:var(--mono);font-size:.67rem;color:var(--ink);letter-spacing:.03em">CDD / CDI / freelance</div>
-          </div>
+          <!-- Divider vertical -->
+          <div style="background:var(--grey-border);height:100%;min-height:80px"></div>
 
-          <div class="contact-sidebar__block">
-            <div style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.55rem">Localisation</div>
-            <div style="font-family:var(--mono);font-size:.67rem;color:var(--ink);letter-spacing:.03em">Strasbourg, France</div>
-          </div>
+          <!-- Infos rapides -->
+          <div style="padding-left:2rem;display:flex;flex-direction:column;gap:1rem">
 
-          <div class="contact-sidebar__block">
-            <div style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.55rem">Ailleurs</div>
-            <div style="display:flex;flex-direction:column;gap:.4rem">
-              <a href="https://www.instagram.com/emile_brk/" target="_blank" rel="noopener noreferrer" class="link-orange" style="text-transform:none;letter-spacing:.03em">Instagram →</a>
-              <a href="https://www.linkedin.com/in/emile-brenckle" target="_blank" rel="noopener noreferrer" class="link-orange" style="text-transform:none;letter-spacing:.03em">LinkedIn →</a>
-              <a href="CV-ID-26-V.pdf" target="_blank" rel="noopener noreferrer" class="link-orange" style="text-transform:none;letter-spacing:.03em">CV →</a>
+            <div>
+              <div style="font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.35rem">statut</div>
+              <div style="font-family:var(--mono);font-size:.66rem;color:var(--ink);letter-spacing:.03em;display:flex;align-items:center;gap:.4rem">
+                <span style="color:var(--orange);font-size:.45rem;line-height:1">●</span>En alternance
+              </div>
             </div>
+
+            <div>
+              <div style="font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.35rem">pour la suite</div>
+              <div style="font-family:var(--mono);font-size:.66rem;color:var(--ink);letter-spacing:.03em">CDD · CDI · freelance</div>
+            </div>
+
+            <div>
+              <div style="font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-mid);margin-bottom:.35rem">ailleurs</div>
+              <div style="display:flex;flex-direction:column;gap:.3rem">
+                <a href="https://www.instagram.com/emile_brk/" target="_blank" rel="noopener noreferrer" class="link-orange" style="text-transform:none;letter-spacing:.03em;font-size:.66rem">Instagram →</a>
+                <a href="https://www.linkedin.com/in/emile-brenckle" target="_blank" rel="noopener noreferrer" class="link-orange" style="text-transform:none;letter-spacing:.03em;font-size:.66rem">LinkedIn →</a>
+              </div>
+            </div>
+
           </div>
 
         </div>
+      </section>
 
-      </div>
+      <!-- ── Tags disponibilité ─────────────────────────────────── -->
+      <section style="padding:1.1rem 2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+        <span style="font-family:var(--mono);font-size:.55rem;color:var(--grey-mid);letter-spacing:.06em;text-transform:uppercase">disciplines :</span>
+        <span style="font-family:var(--mono);font-size:.62rem;color:var(--ink-soft);border:1px solid var(--grey-border);padding:.28rem .65rem;letter-spacing:.03em">Vidéo &amp; Motion</span>
+        <span style="font-family:var(--mono);font-size:.62rem;color:var(--ink-soft);border:1px solid var(--grey-border);padding:.28rem .65rem;letter-spacing:.03em">Web / UI</span>
+        <span style="font-family:var(--mono);font-size:.62rem;color:var(--ink-soft);border:1px solid var(--grey-border);padding:.28rem .65rem;letter-spacing:.03em">Design graphique</span>
+        <span style="font-family:var(--mono);font-size:.62rem;color:var(--ink-soft);border:1px solid var(--grey-border);padding:.28rem .65rem;letter-spacing:.03em">3D</span>
+        <span style="font-family:var(--mono);font-size:.62rem;color:var(--orange);border:1px solid var(--orange);padding:.28rem .65rem;letter-spacing:.03em;display:inline-flex;align-items:center;gap:.35rem;margin-left:auto">
+          <span style="font-size:.5rem;line-height:1">●</span>ouvert aux opportunités
+        </span>
+      </section>
 
     </main>
 
@@ -178,5 +147,26 @@
 </div>
 <script src="js/animations.js"></script>
 <script src="js/theme.js"></script>
+<style>
+  @media (max-width: 640px) {
+    section > div[style*="grid-template-columns:1fr 1px"] {
+      grid-template-columns: 1fr !important;
+    }
+    section > div[style*="grid-template-columns:1fr 1px"] > div:nth-child(2) {
+      display: none !important;
+    }
+    section > div[style*="grid-template-columns:1fr 1px"] > div:nth-child(3) {
+      padding-left: 0 !important;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--grey-border);
+    }
+    section > div[style*="grid-template-columns:1fr auto"] {
+      grid-template-columns: 1fr !important;
+    }
+    section > div[style*="grid-template-columns:1fr auto"] > div:last-child {
+      display: none !important;
+    }
+  }
+</style>
 </body>
 </html>
