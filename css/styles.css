@@ -381,6 +381,11 @@ html {
 }
 .cta-btn:hover { background: var(--orange-lt); transform: translateY(-1px); }
 
+/* Hero section */
+.hero-section {
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem);
+}
+
 /* Colonne gauche du hero */
 .hero-left {
   display: flex;
@@ -632,9 +637,9 @@ html {
   }
 
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .hero-left { gap: 1.4rem; }
-  .grid-hero { gap: 2rem; }
-  .hero-left__content { flex: none; justify-content: flex-start; gap: 1.4rem; }
+  .hero-left { gap: clamp(.8rem, 3vw, 1.4rem); }
+  .grid-hero { gap: clamp(1.25rem, 4vw, 2rem); }
+  .hero-left__content { flex: none; justify-content: flex-start; gap: clamp(.9rem, 3vw, 1.4rem); }
   .hero-ctas { flex-direction: column; align-items: flex-start; gap: .75rem; }
   .site-header { padding: .75rem 1rem; }
   .site-footer { padding: .85rem 1rem; flex-direction: row; justify-content: center; align-items: center; gap: 1.25rem; flex-wrap: nowrap; }
