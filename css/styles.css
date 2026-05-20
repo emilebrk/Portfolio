@@ -640,7 +640,11 @@ html {
   .hero-left { gap: clamp(.8rem, 3vw, 1.4rem); }
   .grid-hero { gap: clamp(1.25rem, 4vw, 2rem); }
   .hero-left__content { flex: none; justify-content: flex-start; gap: clamp(.9rem, 3vw, 1.4rem); }
-  .hero-ctas { flex-direction: column; align-items: flex-start; gap: .75rem; }
+  .hero-ctas { flex-direction: column; align-items: stretch; gap: .55rem; }
+  .hero-ctas .cta-btn { justify-content: center; padding: .9rem 1rem; font-size: .71rem; letter-spacing: .06em; }
+  .hero-ctas .link-orange { text-align: center; font-size: .65rem; padding: .3rem 0; color: var(--grey-mid); letter-spacing: .06em; }
+  .hero-ctas .link-orange::after { display: none; }
+  .hero-stats { border-top: 1px solid var(--grey-border); padding-top: clamp(.75rem, 2.5vw, 1.1rem); justify-content: space-between; }
   .site-header { padding: .75rem 1rem; }
   .site-footer { padding: .85rem 1rem; flex-direction: row; justify-content: center; align-items: center; gap: 1.25rem; flex-wrap: nowrap; }
   .site-footer > span:first-child { display: none; }
