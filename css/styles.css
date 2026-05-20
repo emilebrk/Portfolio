@@ -637,7 +637,7 @@ html {
   }
 
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .hero-left { gap: clamp(1.2rem, 4vw, 1.8rem); }
+  .hero-left { gap: clamp(1.8rem, 5vw, 2.4rem); }
   .grid-hero { gap: clamp(1.25rem, 4vw, 2rem); }
   .hero-left__content { flex: none; justify-content: flex-start; gap: clamp(.9rem, 3vw, 1.4rem); }
   .hero-ctas { flex-direction: column; align-items: stretch; gap: .55rem; }
