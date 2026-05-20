@@ -163,6 +163,7 @@ html {
   transform: translate(-50%, -50%);
   width: 84vw;
   max-width: 1440px;
+  min-height: 86vh;
   max-height: 86vh;
   display: flex;
   flex-direction: column;
