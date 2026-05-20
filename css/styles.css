@@ -632,6 +632,7 @@ html {
   }
 
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .hero-left { gap: .6rem; }
   .hero-left__content { flex: none; justify-content: flex-start; gap: 1rem; }
   .hero-ctas { flex-direction: column; align-items: flex-start; gap: .65rem; }
   .site-header { padding: .75rem 1rem; }
