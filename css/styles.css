@@ -644,7 +644,9 @@ html {
   .hero-ctas .cta-btn { justify-content: center; padding: .9rem 1rem; font-size: .71rem; letter-spacing: .06em; }
   .hero-ctas .link-orange { text-align: center; font-size: .65rem; padding: .3rem 0; color: var(--grey-mid); letter-spacing: .06em; }
   .hero-ctas .link-orange::after { display: none; }
-  .hero-stats { border-top: 1px solid var(--grey-border); padding-top: clamp(.75rem, 2.5vw, 1.1rem); justify-content: space-between; }
+  .hero-stats { justify-content: space-between; }
+  .hero-ctas .link-orange { font-family: var(--body); font-size: .78rem; color: var(--grey-mid); letter-spacing: 0; text-transform: none; text-align: center; padding: .15rem 0; }
+  .hero-ctas .link-orange::after { display: none; }
   .site-header { padding: .75rem 1rem; }
   .site-footer { padding: .85rem 1rem; flex-direction: row; justify-content: center; align-items: center; gap: 1.25rem; flex-wrap: nowrap; }
   .site-footer > span:first-child { display: none; }
