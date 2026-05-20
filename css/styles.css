@@ -632,10 +632,10 @@ html {
   }
 
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .hero-left { gap: 1.1rem; }
-  .grid-hero { gap: 1.5rem; }
-  .hero-left__content { flex: none; justify-content: flex-start; gap: 1rem; }
-  .hero-ctas { flex-direction: column; align-items: flex-start; gap: .65rem; }
+  .hero-left { gap: 1.4rem; }
+  .grid-hero { gap: 2rem; }
+  .hero-left__content { flex: none; justify-content: flex-start; gap: 1.4rem; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; gap: .75rem; }
   .site-header { padding: .75rem 1rem; }
   .site-footer { padding: .85rem 1rem; flex-direction: row; justify-content: center; align-items: center; gap: 1.25rem; flex-wrap: nowrap; }
   .site-footer > span:first-child { display: none; }
