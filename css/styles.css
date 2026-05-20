@@ -385,11 +385,8 @@ html {
 .hero-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1.25rem;
-}
-@media (max-width: 600px) {
-  .hero-left { justify-content: flex-start; }
+  gap: 1.5rem;
+  align-self: center;
 }
 
 .hero-ctas {
