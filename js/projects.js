@@ -347,60 +347,55 @@ document.addEventListener('DOMContentLoaded', () => {
   positionFolder();
   window.addEventListener('resize', positionFolder);
 
-  /* Ancrer le browser à des coordonnées explicites */
-  function anchorBrowser() {
-    const r = browser.getBoundingClientRect();
-    browser.style.top       = r.top  + 'px';
-    browser.style.left      = r.left + 'px';
-    browser.style.transform = 'none';
-    browser.style.transformOrigin = 'center center';
+  /*
+   * Offset en px entre le centre du dossier et le centre du viewport.
+   * Le browser CSS est centré sur (50vw, 50vh) via top:50%;left:50%;translate(-50%,-50%).
+   */
+  function getFolderOffset() {
+    const fr = folder.getBoundingClientRect();
+    return {
+      x: fr.left + fr.width  / 2 - window.innerWidth  / 2,
+      y: fr.top  + fr.height / 2 - window.innerHeight / 2
+    };
   }
 
-  /* Retour au centre CSS */
-  function restoreCenter() {
-    browser.style.transition      = '';
-    browser.style.transformOrigin = '';
-    browser.style.top             = '50%';
-    browser.style.left            = '50%';
-    browser.style.transform       = 'translate(-50%, -50%)';
-  }
+  const EASE_IN     = 'cubic-bezier(.55,0,.1,1)';
+  const EASE_SPRING = 'cubic-bezier(.34,1.56,.64,1)';
 
   /* ── Minimize ── */
   yellowDot.addEventListener('click', () => {
     if (minimized) return;
     minimized = true;
 
-    /* Lire les rects AVANT d'écrire quoi que ce soit (évite double reflow) */
-    const br  = browser.getBoundingClientRect();
-    const fr  = folder.getBoundingClientRect();
+    const { x, y } = getFolderOffset();
+    const bw = browser.offsetWidth;
+    const bh = browser.offsetHeight;
+    const startT = `translate(${-(bw/2)}px,${-(bh/2)}px) scale(1) rotate(0deg)`;
+    const endT   = `translate(${-(bw/2)+x}px,${-(bh/2)+y}px) scale(0.04) rotate(-4deg)`;
 
-    /* Ancrer à des px fixes (sans transition) */
-    browser.style.transition      = 'none';
-    browser.style.top             = br.top  + 'px';
-    browser.style.left            = br.left + 'px';
-    browser.style.transform       = 'none';
-    browser.style.transformOrigin = 'center center';
-    browser.style.willChange      = 'transform, opacity';
+    /*
+     * Technique CSS transition fiable :
+     * 1. Fixer l'état de départ explicitement (pixels purs, pas de %)
+     * 2. Supprimer animation CSS (fadeUp fill-mode) qui bloquait le transform
+     * 3. Forcer un reflow pour que le navigateur commite cet état
+     * 4. Appliquer la transition + l'état final
+     */
+    browser.style.animation  = 'none';
+    browser.style.transition = 'none';
+    browser.style.transform  = startT;
+    browser.style.opacity    = '1';
 
-    const bCX = br.left + br.width  / 2;
-    const bCY = br.top  + br.height / 2;
-    const fCX = fr.left + fr.width  / 2;
-    const fCY = fr.top  + fr.height / 2;
-    const dx  = fCX - bCX;
-    const dy  = fCY - bCY;
+    void browser.offsetHeight; /* reflow forcé */
 
-    /* Animer uniquement transform + opacity (GPU, pas de layout) */
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      browser.style.transition = 'transform .5s cubic-bezier(.55,0,.1,1), opacity .38s ease';
-      browser.style.transform  = `translate(${dx}px, ${dy}px) scale(0.04) rotate(-4deg)`;
-      browser.style.opacity    = '0';
-    }));
+    browser.style.transition = `transform .48s ${EASE_IN}, opacity .36s ease`;
+    browser.style.transform  = endT;
+    browser.style.opacity    = '0';
 
     setTimeout(() => {
       browser.style.visibility = 'hidden';
-      browser.style.willChange = '';
+      browser.style.transition = '';
       folder.classList.add('is-minimized');
-    }, 520);
+    }, 500);
   });
 
   /* ── Restaurer ── */
@@ -409,46 +404,37 @@ document.addEventListener('DOMContentLoaded', () => {
     minimized = false;
     folder.classList.remove('is-minimized');
 
-    const fr  = folder.getBoundingClientRect();
-    const fCX = fr.left + fr.width  / 2;
-    const fCY = fr.top  + fr.height / 2;
-    const w   = window.innerWidth;
-    const h   = window.innerHeight;
-    const bw  = browser.offsetWidth;
-    const bh  = browser.offsetHeight;
+    const { x, y } = getFolderOffset();
+    const bw = browser.offsetWidth;
+    const bh = browser.offsetHeight;
+    const startT = `translate(${-(bw/2)+x}px,${-(bh/2)+y}px) scale(0.04) rotate(-4deg)`;
+    const endT   = `translate(${-(bw/2)}px,${-(bh/2)}px) scale(1) rotate(0deg)`;
 
-    /* Flash d'ouverture du dossier */
-    folder.style.transition = 'transform .2s cubic-bezier(.34,1.56,.64,1)';
-    folder.style.transform  = 'scale(1.22)';
-    setTimeout(() => { folder.style.transform = 'scale(1)'; folder.style.transition = ''; }, 200);
+    /* Flash dossier */
+    folder.animate([
+      { transform: 'scale(1)'    },
+      { transform: 'scale(1.22)' },
+      { transform: 'scale(1)'    }
+    ], { duration: 280, easing: EASE_SPRING });
 
-    /*
-     * Placer le browser au CENTRE (sans transition) avec un transform offset
-     * qui le fait visuellement apparaître au niveau du dossier.
-     * On animera uniquement transform + opacity → zéro layout, 60 fps.
-     */
-    const offsetX = fCX - w / 2;
-    const offsetY = fCY - h / 2;
+    /* Positionner au niveau du dossier, invisible */
+    browser.style.animation  = 'none';
+    browser.style.transition = 'none';
+    browser.style.visibility = 'visible';
+    browser.style.transform  = startT;
+    browser.style.opacity    = '0';
 
-    browser.style.transition      = 'none';
-    browser.style.visibility      = 'visible';
-    browser.style.opacity         = '0';
-    browser.style.left            = ((w - bw) / 2) + 'px';
-    browser.style.top             = ((h - bh) / 2) + 'px';
-    browser.style.transformOrigin = 'center center';
-    browser.style.transform       = `translate(${offsetX}px, ${offsetY}px) scale(0.04) rotate(-4deg)`;
-    browser.style.willChange      = 'transform, opacity';
+    void browser.offsetHeight; /* reflow forcé */
 
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      browser.style.transition = 'transform .56s cubic-bezier(.34,1.56,.64,1), opacity .28s ease';
-      browser.style.transform  = 'translate(0,0) scale(1) rotate(0deg)';
-      browser.style.opacity    = '1';
-    }));
+    browser.style.transition = `transform .54s ${EASE_SPRING}, opacity .28s ease`;
+    browser.style.transform  = endT;
+    browser.style.opacity    = '1';
 
     setTimeout(() => {
-      browser.style.willChange = '';
-      restoreCenter();
+      browser.style.transition = '';
+      browser.style.transform  = '';
+      browser.style.opacity    = '';
       positionFolder();
-    }, 600);
+    }, 580);
   });
 });
