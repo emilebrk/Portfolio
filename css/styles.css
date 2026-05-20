@@ -741,6 +741,31 @@ html {
   transform: scale(1.05);
 }
 
+/* ─── Focus visible ────────────────────────────────────────────────── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Page projet : galerie & méta ─────────────────────────────────── */
+.project-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.project-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 600px) {
+  .project-gallery { grid-template-columns: 1fr; }
+  .project-meta    { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+
 /* ─── Scrollbar ────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--cream); }

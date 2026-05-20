@@ -79,7 +79,7 @@
     </div>
 
     <!-- Secondary visuals -->
-    <div style="padding:2rem 2rem 0;display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start">
+    <div class="project-gallery" style="padding:2rem 2rem 0">
       ${p.detailImages
         ? p.detailImages.map(src => `
           <div style="position:relative;padding-top:56.25%;overflow:hidden;border:1px solid var(--grey-border)">
@@ -115,7 +115,7 @@
     </div>
 
     <!-- 3-column info -->
-    <div style="padding:1.75rem 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;border-top:1px solid var(--grey-border);border-bottom:1px solid var(--grey-border)">
+    <div class="project-meta" style="padding:1.75rem 2rem;border-top:1px solid var(--grey-border);border-bottom:1px solid var(--grey-border)">
       ${[
         { label: 'rôle',     items: p.role    },
         { label: 'outils',   items: p.tools   },
