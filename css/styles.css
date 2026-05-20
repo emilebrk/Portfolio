@@ -82,6 +82,26 @@ a { color: inherit; text-decoration: none; }
 img, video { display: block; max-width: 100%; }
 button { font-family: inherit; cursor: pointer; }
 
+/* ─── Micro-interactions (UI/UX Pro Max) ──────────────────────────── */
+
+/* Point de statut pulsant */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .55; transform: scale(.8); }
+}
+.status-dot { display: inline-block; animation: pulse-dot 2.6s ease-in-out infinite; }
+
+/* Nav : underline glissant au hover */
+.site-nav a:not(.active)::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--grey-mid);
+  transition: width .22s var(--ease);
+}
+.site-nav a:not(.active):hover::after { width: 100%; }
+
 /* ─── Annotation manuscrite (Caveat) ──────────────────────────────── */
 .annot {
   font-family: 'Caveat', cursive;
@@ -379,7 +399,8 @@ html {
   border-radius: 3px;
   transition: background .2s var(--ease), transform .15s var(--ease);
 }
-.cta-btn:hover { background: var(--orange-lt); transform: translateY(-1px); }
+.cta-btn:hover  { background: var(--orange-lt); transform: translateY(-1px); }
+.cta-btn:active { transform: translateY(1px) scale(.98); transition-duration: .08s; }
 
 /* Hero section */
 .hero-section {
@@ -485,12 +506,12 @@ html {
 .card {
   display: block;
   cursor: pointer;
-  transition: transform .22s var(--ease);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease);
   text-decoration: none;
   color: inherit;
 }
-.card:hover { transform: translateY(-4px) rotate(-.5deg); }
-.card.revealed:hover { transform: translateY(-4px) rotate(-.5deg); }
+.card:hover        { transform: translateY(-4px) rotate(-.5deg); box-shadow: 0 10px 28px rgba(26,25,23,.09); }
+.card.revealed:hover { transform: translateY(-4px) rotate(-.5deg); box-shadow: 0 10px 28px rgba(26,25,23,.09); }
 .card:hover .card__media { border-color: var(--orange); }
 .card:hover .card__cta { opacity: 1; }
 
@@ -687,15 +708,6 @@ html {
   .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
 }
 
-/* ─── Status dot pulse ─────────────────────────────────────────────── */
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: .3; transform: scale(.75); }
-}
-.status-dot {
-  animation: pulse-dot 1.8s ease-in-out infinite;
-  display: inline-flex;
-}
 
 /* ─── Skill cards : légères rotations naturelles ───────────────────── */
 .skill-card.revealed:nth-child(1) { transform: rotate(-.45deg); }
