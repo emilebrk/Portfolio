@@ -642,13 +642,10 @@ html {
   .hero-left__content { flex: none; justify-content: flex-start; gap: clamp(.9rem, 3vw, 1.4rem); }
   .hero-ctas { flex-direction: row; align-items: center; gap: .85rem; }
   .hero-ctas .cta-btn { flex: 1; justify-content: center; padding: .85rem 1rem; font-size: .71rem; letter-spacing: .06em; }
+  .hero-ctas .cta-btn .cta-arrow { display: none; }
   .hero-ctas .link-orange { flex-shrink: 0; font-family: var(--body); font-size: .78rem; color: var(--grey-mid); letter-spacing: 0; text-transform: none; white-space: nowrap; }
   .hero-ctas .link-orange::after { display: none; }
   .hero-stats { justify-content: space-between; }
-
-  .cta-arrow { display: none; }
-  .hero-ctas .link-orange { font-family: var(--body); font-size: .78rem; color: var(--grey-mid); letter-spacing: 0; text-transform: none; text-align: center; padding: .15rem 0; }
-  .hero-ctas .link-orange::after { display: none; }
   .site-header { padding: .75rem 1rem; }
   .site-footer { padding: .85rem 1rem; flex-direction: row; justify-content: center; align-items: center; gap: 1.25rem; flex-wrap: nowrap; }
   .site-footer > span:first-child { display: none; }
