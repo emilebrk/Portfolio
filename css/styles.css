@@ -646,9 +646,7 @@ html {
   .hero-ctas .link-orange::after { display: none; }
   .hero-stats { justify-content: space-between; }
 
-@media (max-width: 390px) {
   .cta-arrow { display: none; }
-}
   .hero-ctas .link-orange { font-family: var(--body); font-size: .78rem; color: var(--grey-mid); letter-spacing: 0; text-transform: none; text-align: center; padding: .15rem 0; }
   .hero-ctas .link-orange::after { display: none; }
   .site-header { padding: .75rem 1rem; }
