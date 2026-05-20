@@ -381,6 +381,17 @@ html {
 }
 .cta-btn:hover { background: var(--orange-lt); transform: translateY(-1px); }
 
+/* Colonne gauche du hero */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+@media (max-width: 600px) {
+  .hero-left { justify-content: flex-start; }
+}
+
 .hero-ctas {
   display: flex;
   align-items: center;
