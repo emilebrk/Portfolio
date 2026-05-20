@@ -506,12 +506,12 @@ html {
 .card {
   display: block;
   cursor: pointer;
-  transition: transform .22s var(--ease), box-shadow .22s var(--ease);
+  transition: transform .22s var(--ease);
   text-decoration: none;
   color: inherit;
 }
-.card:hover        { transform: translateY(-4px) rotate(-.5deg); box-shadow: 0 10px 28px rgba(26,25,23,.09); }
-.card.revealed:hover { transform: translateY(-4px) rotate(-.5deg); box-shadow: 0 10px 28px rgba(26,25,23,.09); }
+.card:hover        { transform: translateY(-4px) rotate(-.5deg); }
+.card.revealed:hover { transform: translateY(-4px) rotate(-.5deg); }
 .card:hover .card__media { border-color: var(--orange); }
 .card:hover .card__cta { opacity: 1; }
 
